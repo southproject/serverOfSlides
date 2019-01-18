@@ -76,9 +76,30 @@ function queryUsers(req,res){
 
 }
 
+//query Rsult Test
+function queryResultTest(req,res){
+
+    const user_name = req.query.user_name;
+    const passwd = req.query.passwd;
+
+    User_table.findOne({
+        attributes: ['user_id','user_name','passwd'],
+        where:{
+            user_name:user_name,
+            passwd:passwd
+        }
+    }).then(result=>{
+       console.log("result:",result);
+       console.log("user_id:",result.dataValues.user_id);
+       res.send(result);
+    })
+}
+
+
 
 
 module.exports={
     addUsers:addUsers,
-    queryUsers:queryUsers
+    queryUsers:queryUsers,
+    queryResultTest:queryResultTest
 }

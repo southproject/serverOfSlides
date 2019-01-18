@@ -8,11 +8,13 @@ var api = require('./routes/api');
 var index = require('./routes/index');
 var app = express();
 const swaggerJSDoc = require('swagger-jsdoc');
+var oauth2 = require('./auth/oauth2');
+
 
 const options = {
   definition:{
     info:{
-      title:'NodejsRESTful API',
+      title:'Sync_RESTful API',
       version:'1.0.0'
     },
   },
@@ -41,7 +43,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 //app.use('/users', users);
-app.use('/api',api)
+app.use('/api',api);
+app.use('/api/oauth/token',oauth2.token);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

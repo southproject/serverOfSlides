@@ -6,4 +6,10 @@ var mysql_conf = {
     "dialect":"mysql"
 }
 
-module.exports = {mysql_conf};
+var tokenLifeTime = 3600;
+
+
+module.exports = {
+    mysql_conf,
+    tokenLifeTime
+};

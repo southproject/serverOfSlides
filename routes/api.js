@@ -40,13 +40,13 @@ router.get('/queryUsers',user_table.queryUsers);
 *   userinfo:
 *     properties:
 *       user_name:
-*         type: string
+*         type: bing
 *       passwd:
-*         type: string
+*         type: 123456
 *       email:
-*         type: string
+*         type: 1542721301@qq.com
 *       phone_num:
-*         type: string
+*         type: 13297920692
 */
 /**
  * @swagger
@@ -71,5 +71,31 @@ router.get('/queryUsers',user_table.queryUsers);
  */
 router.post('/addUsers',user_table.addUsers);
 
+/**
+ * @swagger
+ * /api/queryResultTest:
+ *   get:
+ *     tags:
+ *       - user
+ *     description: test resultinfo -by bing
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *      - name: user_name
+ *        description: user_name
+ *        in: query
+ *        required: true
+ *        type: string
+ *      - name: passwd
+ *        description: passwd
+ *        in: query
+ *        required: true
+ *        type: string
+ *     responses:
+ *       200:
+ *         description: Successfully
+ *
+ */
+router.get('/queryResultTest',user_table.queryResultTest);
 
 module.exports = router;
