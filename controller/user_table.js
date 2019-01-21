@@ -95,11 +95,73 @@ function queryResultTest(req,res){
     })
 }
 
+//Destory Format Test
+function destoryFormatTest(req,res){
 
+    const user_id = req.query.user_id;
+    
+    User_table.destroy({
+        where:{user_id:user_id}
+    }).then(result=>{
+        console.log(result);
+        res.send(JSON.stringify(result));
+    })
+}
+
+//Generic error handler
+var errFn = function(cb, err){
+    if(err){
+        return cb(err);
+    }
+}
+
+
+//saveUserModel
+function saveUserModel(req,res){
+
+    const user_name = req.query.user_name;
+    
+    const user_demo = {
+        user_name:user_name,
+        passwd:'123456',
+        email:'1542721301@qq.com',
+        phone_num:'13297920692'
+    }
+
+    const userModel = new User_table(user_demo);
+
+    var errorHandler = errFn.bind(undefined,res);
+
+    userModel.save()
+             .then(()=>{
+                console.log("---save function then()---");
+                //if(err)res.send(JSON.stringify('Success'));
+                if(!err)return;
+             })
+             .catch(error=>{
+                console.log("---save function catch_error()---");
+             })
+             
+}
+
+//BasicStrategy function
+function findByUsername(username,cb){
+        User_table.findOne({
+            attributes: ['user_id','user_name','passwd'],
+        where:{
+            user_name:username
+        }}).then(result=>{
+            console.log("result: ",result);
+            if(result!=null)return cb(null,result.dataValues);
+        })
+}
 
 
 module.exports={
     addUsers:addUsers,
     queryUsers:queryUsers,
-    queryResultTest:queryResultTest
+    queryResultTest:queryResultTest,
+    destoryFormatTest:destoryFormatTest,
+    saveUserModel:saveUserModel,
+    findByUsername:findByUsername
 }

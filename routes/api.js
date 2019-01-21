@@ -7,6 +7,9 @@ var user = require('../controller/user');
 
 var user_table = require('../controller/user_table');
 
+//js逻辑引用
+var oauth2 = require('../auth/oauth2');
+
 
 //添加验证
 mysqlConnection
@@ -97,5 +100,53 @@ router.post('/addUsers',user_table.addUsers);
  *
  */
 router.get('/queryResultTest',user_table.queryResultTest);
+
+/**
+ * @swagger
+ * /api/destoryFormatTest:
+ *   delete:
+ *     tags:
+ *       - user
+ *     description: 删除返回值测试
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: user_id
+ *         description: user_id
+ *         in: query
+ *         required: true
+ *         type: integer
+ *     responses:
+ *       200:
+ *         description: Successfully
+ *
+ */
+router.delete('/destoryFormatTest',user_table.destoryFormatTest);
+
+
+/**
+ * @swagger
+ * /api/saveUserModel:
+ *   get:
+ *     tags:
+ *       - user
+ *     description: test save() function -by bing
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *      - name: user_name
+ *        description: user_name
+ *        in: query
+ *        required: true
+ *        type: string
+ *     responses:
+ *       200:
+ *         description: Successfully
+ *
+ */
+router.get('/saveUserModel',user_table.saveUserModel);
+
+console.log("come in router");
+//router.post('/token',oauth2.token);
 
 module.exports = router;

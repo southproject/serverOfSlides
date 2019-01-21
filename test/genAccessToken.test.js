@@ -1,15 +1,15 @@
 //test Unit引包
 var test = require('tape');
 var request = require('superagent');
-var baseURL = 'http://localhost:3000';
+var baseUrl = 'http://localhost:3000/api';
 
 var userCredentials = {
-    username: config.get('default:user:username'),
-    password: config.get('default:user:password')
+    username: "bing",
+    password: "123456789"
 };
 var clientCredentials = {
-    client_id: config.get('default:client:clientId'),
-    client_secret: config.get('default:client:clientSecret')
+    client_id: "A10",
+    client_secret: "xiaomi"
 };
 var accessToken;
 var refreshToken;

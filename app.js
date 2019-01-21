@@ -8,7 +8,9 @@ var api = require('./routes/api');
 var index = require('./routes/index');
 var app = express();
 const swaggerJSDoc = require('swagger-jsdoc');
-var oauth2 = require('./auth/oauth2');
+//var oauth2 = require('./auth/oauth2');
+
+var oauth = require('./routes/oauth');
 
 
 const options = {
@@ -44,7 +46,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 //app.use('/users', users);
 app.use('/api',api);
-app.use('/api/oauth/token',oauth2.token);
+console.log("---App.js---");
+//app.use('/api/oauth/token',oauth2.token);
+app.use('/api/oauth',oauth);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
