@@ -6,10 +6,7 @@ var client_info = require('../models/client_info');
 const Client_info = client_info(Connection,Sequelize);
 
 //client endpoint query
-function findByClientId(client_id,done){
-
-    //const client_id = clientMessage.client_id;
-    //const client_secret = clientMessage.client_secret;
+function findByClientId(client_id,cb){
 
     Client_info.findOne({
         attributes: ['id','client_name','client_id','client_secret'],
@@ -18,15 +15,10 @@ function findByClientId(client_id,done){
         // client_secret:client_secret
         }
     }).then(result=>{
-        if(result!=null){
-            return done(null,result.dataValues);
-        }else{
-            return done(new Error('Client Not Found'));
-        };
+        //console.log("-----------------result--------------------");
+        //console.log(result.dataValues);
+        if(result!=null)return cb(null,result.dataValues);
     })
-
-
-
 }
 
 

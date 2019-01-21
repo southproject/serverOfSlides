@@ -37,8 +37,8 @@ test('Get token from username-password', function (t) {
             //console.log(res.body);
             t.end();
         });
-       console.log('userCredentials: ');
-       console.log(userCredentials);
-       console.log('clientCredentials: ')
-       console.log(clientCredentials);
+       //console.log('userCredentials: ');
+       //console.log(userCredentials);
+       //console.log('clientCredentials: ')
+       //console.log(clientCredentials);
 });

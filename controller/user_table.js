@@ -147,13 +147,26 @@ function saveUserModel(req,res){
 //BasicStrategy function
 function findByUsername(username,cb){
         User_table.findOne({
-            attributes: ['user_id','user_name','passwd'],
+            attributes: ['user_id','user_name','passwd','email'],
         where:{
             user_name:username
         }}).then(result=>{
-            console.log("result: ",result);
+            console.log("result: ",result.dataValues);
             if(result!=null)return cb(null,result.dataValues);
         })
+}
+
+//findByUserId
+function findByUserId(user_id,cb){
+    User_table.findOne({
+        attributes:['user_id','user_name','passwd','email'],
+        where:{
+            user_id:user_id
+        }
+    }).then(result=>{
+        console.log("result: ",result.dataValues);
+        if(result!=null)return cb(null,result.dataValues);
+    })
 }
 
 
@@ -163,5 +176,6 @@ module.exports={
     queryResultTest:queryResultTest,
     destoryFormatTest:destoryFormatTest,
     saveUserModel:saveUserModel,
-    findByUsername:findByUsername
+    findByUsername:findByUsername,
+    findByUserId:findByUserId
 }

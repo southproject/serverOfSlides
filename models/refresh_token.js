@@ -21,8 +21,9 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
     created_time: {
-      type: DataTypes.DATEONLY,
-      allowNull: true
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
     }
   }, {
     tableName: 'refresh_token',
