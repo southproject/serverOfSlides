@@ -98,7 +98,7 @@ passport.use(new ClientPasswordStrategy(
 
 
 
-var generateTokens = function(data, done){
+var generateTokens = async function(data, done){
 
     var errorHandler = errFn.bind(undefined,done),
         //存入数据库中的refresh_Token,具有完整格式的
@@ -150,15 +150,16 @@ var generateTokens = function(data, done){
     //Refresh_tokenModel.save(refresh_TokenModel,errorHandler);
     //4.2.access_TokenModel的持久化存储
     
-    Access_tokenC.save(access_TokenModel,function (err) {
+  await  Access_tokenC.save(access_TokenModel,function (err) {
         if (err) {
             log.error(err);
             return done(err);
         }
-        console.log("-------come in done function------");
-        done(null, access_TokenModel, refresh_TokenModel, {
+        console.log("-------come in done function1------");
+        console.log("done: ", done);
+        !done(null, access_TokenValue, refresh_TokenValue, {
             'expires_in': config.tokenLifeTime
-        });
+        })&&console.log("-------come in done function2------");
     });
     
    /*
@@ -185,11 +186,11 @@ var generateTokens = function(data, done){
 //Exchange username & password for access token
 aserver.exchange(
     oauth2orize.exchange.password( 
-        function(client, username, password, scope, done){
+      async function(client, username, password, scope, done){
             console.log("come in exchange password");
             console.log(client);
              //1.查找验证用户名
-            User_tableC.findByUsername(username, function(err, user){
+        await User_tableC.findByUsername(username, function(err, user){
 
                 if (err) {
                     return done(err);
@@ -203,6 +204,7 @@ aserver.exchange(
                     client_id:client.client_id
                 };
                 generateTokens(model,done);
+                console.log("-------come in generateTokens------");
 
             }); 
 }));
