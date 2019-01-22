@@ -7,6 +7,8 @@ var access_token = require('../models/access_token');
 var refresh_token = require('../models/refresh_token');
 var client_info = require('../controller/client_info');
 
+//system config params
+var config = require('../config')
 
 //Connections
 //const User_table = user_table(Connection,Sequelize);
@@ -17,6 +19,7 @@ const Refresh_token = refresh_token(Connection,Sequelize);
 //Controller function
 const User_table = require('../controller/user_table');
 const Client_info = require('../controller/client_info');
+const Access_tokenC = require('../controller/access_token');
 
 //OAuth Strategy
 var passport = require('passport');
@@ -68,6 +71,45 @@ passport.use(new ClientPasswordStrategy(
             console.log("-------------client------------------");
             console.log(client);
             return done(null, client);
+        });
+    }
+));
+
+//BearerStrategy adjust for Sequelize to MySQL
+passport.use(new BearerStrategy(
+    function(access_token,done){
+        Access_tokenC.findOneByToken(access_token,function(err,token){
+            if (err) {
+                return done(err);
+            }
+
+            if (!token) {
+                return done(null, false);
+            }
+            console.log("--------come in Math.round()---------");
+            if(Math.round((Date.now()-token.created_time)/1000)>config.tokenLifeTime){
+
+                Access_tokenC.remove(access_token,function(err){
+                    if(err){
+                        return done(err);
+                    }
+                });
+                return done(null, false, {message:'Token expired'});
+            }
+
+            User_table.findByUserId(token.user_id, function(err, user){
+                if(err){
+                    return done(err);
+                }
+
+                if(!user){
+                    return done(null, false, {message:'Unknown user'});
+                }
+
+                var info = {scope:'*'};
+                done(null, user, info);
+            })
+
         });
     }
 ));
