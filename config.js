@@ -8,8 +8,13 @@ var mysql_conf = {
 
 var tokenLifeTime = 3600;
 
+var redis_conf = {
+    host:'127.0.0.1',
+    port:'6379'
+}
 
 module.exports = {
     mysql_conf,
-    tokenLifeTime
+    tokenLifeTime,
+    redis_conf
 };

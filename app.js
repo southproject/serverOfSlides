@@ -29,6 +29,7 @@ app.get('/swagger.json',function(req,res){
   res.send(swaggerSpec);
 });
 
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -59,6 +60,16 @@ app.use('/api',api);
 console.log("---App.js---");
 //app.use('/api/oauth/token',oauth2.token);
 app.use('/api/oauth',oauth);
+
+//redis connection test
+var redis = require('redis'),
+    client = redis.createClient(6379,'127.0.0.1');
+
+client.on("error",function(err){
+    console.log("Error: "+err);
+});
+
+client.set("string key","string val", redis.print);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
