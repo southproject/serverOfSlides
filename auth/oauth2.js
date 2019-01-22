@@ -4,20 +4,20 @@ var passport = require('passport');
 var crypto = require('crypto');
 
 //Data Models
-var Sequelize = require('sequelize');
-const Op = Sequelize.Op;
-var Connection = require('../database/mysql-connection');
-var user_table = require('../models/user_table');
-var access_token = require('../models/access_token');
-var refresh_token = require('../models/refresh_token');
+//var Sequelize = require('sequelize');
+//const Op = Sequelize.Op;
+//var Connection = require('../database/mysql-connection');
+//var user_table = require('../models/user_table');
+//var access_token = require('../models/access_token');
+//var refresh_token = require('../models/refresh_token');
 
 //system config params
 var config = require('../config')
 
 //Connections
 //const User_table = user_table(Connection,Sequelize);
-const Access_tokenModel = access_token(Connection,Sequelize);
-const Refresh_tokenModel = refresh_token(Connection,Sequelize);
+//const Access_tokenModel = access_token(Connection,Sequelize);
+//const Refresh_tokenModel = refresh_token(Connection,Sequelize);
 
 //controller's package function
 const User_tableC = require('../controller/user_table');
@@ -98,7 +98,7 @@ passport.use(new ClientPasswordStrategy(
 
 
 
-var generateTokens = async function(data, done){
+var generateTokens =  function(data, done){
 
     var errorHandler = errFn.bind(undefined,done),
         //存入数据库中的refresh_Token,具有完整格式的
@@ -150,16 +150,17 @@ var generateTokens = async function(data, done){
     //Refresh_tokenModel.save(refresh_TokenModel,errorHandler);
     //4.2.access_TokenModel的持久化存储
     
-  await  Access_tokenC.save(access_TokenModel,function (err) {
+    Access_tokenC.save(access_TokenModel,function (err) {
         if (err) {
             log.error(err);
             return done(err);
         }
-        console.log("-------come in done function1------");
-        console.log("done: ", done);
-        !done(null, access_TokenValue, refresh_TokenValue, {
+        //console.log("-------come in done function1------");
+        //console.log("done: ", done);
+        done(null, access_TokenValue, refresh_TokenValue, {
             'expires_in': config.tokenLifeTime
-        })&&console.log("-------come in done function2------");
+        });
+        //console.log("-------come in done function2------");
     });
     
    /*
@@ -186,11 +187,11 @@ var generateTokens = async function(data, done){
 //Exchange username & password for access token
 aserver.exchange(
     oauth2orize.exchange.password( 
-      async function(client, username, password, scope, done){
-            console.log("come in exchange password");
-            console.log(client);
-             //1.查找验证用户名
-        await User_tableC.findByUsername(username, function(err, user){
+       function(client, username, password, scope, done){
+            //console.log("come in exchange password");
+            //console.log(client);
+             //1.find username and check passwd
+         User_tableC.findByUsername(username, function(err, user){
 
                 if (err) {
                     return done(err);
@@ -204,7 +205,7 @@ aserver.exchange(
                     client_id:client.client_id
                 };
                 generateTokens(model,done);
-                console.log("-------come in generateTokens------");
+                //console.log("-------come in generateTokens------");
 
             }); 
 }));

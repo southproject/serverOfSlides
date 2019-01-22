@@ -14,6 +14,7 @@ var clientCredentials = {
 var accessToken;
 var refreshToken;
 
+
 function getTokensFromBody(body) {
     if (!('access_token' in body) || !('refresh_token' in body)) {
         return false;
@@ -34,11 +35,8 @@ test('Get token from username-password', function (t) {
         .end(function (err, res) {
             t.equal(res.status, 200, 'response status shoud be 200');
             t.true(getTokensFromBody(res.body), 'tokens shoud be in response body');
-            //console.log(res.body);
             t.end();
         });
-       //console.log('userCredentials: ');
-       //console.log(userCredentials);
-       //console.log('clientCredentials: ')
-       //console.log(clientCredentials);
+        console.log("userCredentials:",userCredentials);
+        console.log("clientCredentials:",clientCredentials);
 });

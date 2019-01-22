@@ -27,14 +27,14 @@ function save(data,cb){
     Access_token.create({
         user_id:data.user_id,
         client_id:data.client_id,
-        token:data.token,
-        create_time:Date.now()
+        token:data.token
+        //create_time:Date.now()
     }).then(result=>{
-        console.log("--------Date.now()------");
-        console.log(Date.now());
-        console.log("--------var now = new Date()------");
-        var now = new Date();
-        console.log(now);
+        //console.log("--------Date.now()------");
+        //console.log(Date.now());
+        //console.log("--------var now = new Date()------");
+        //var now = new Date();
+        //console.log(now);
       if(result==0){
          return cb(new Error('save failed'));
       }

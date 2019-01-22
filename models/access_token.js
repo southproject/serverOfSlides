@@ -23,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
     created_time: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
+      defaultValue: Date.now
     }
   }, {
     tableName: 'access_token',
