@@ -3,6 +3,10 @@ var express = require('express');
 var router = express.Router();
 const mysqlConnection = require('../database/mysql-connection');
 const redisConnection = require('../database/redis-connection');
+const mongoConnection = require('../database/mongo-connection');
+
+var log =  require('../log')(module);
+
 var passport = require('passport');
 var BearerStrategy = require('passport-http-bearer').Strategy;
 //system config params
@@ -77,8 +81,15 @@ mysqlConnection
 redisConnection.on("error",function(err){
     console.log("Error: "+err);
 });
-
 //redisConnection.set("string key","string val", redis.print);
+
+//logs for mongooseConnection
+mongoConnection.on('error',function(err){
+    log.error('Connection error: ', err.message);
+});
+mongoConnection.once('open', function callback(){
+    log.info('Connected to DB! ');
+});
 
 
 router.get('/', passport.authenticate('bearer',{session:false}), function(req,res){

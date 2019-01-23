@@ -13,8 +13,13 @@ var redis_conf = {
     port:'6379'
 }
 
+var mongoose_conf = {
+    uri:"mongodb://localhost/apiDB"
+}
+
 module.exports = {
     mysql_conf,
     tokenLifeTime,
-    redis_conf
+    redis_conf,
+    mongoose_conf
 };
