@@ -1,5 +1,5 @@
 var express = require('express');
-//var redis = require('redis');
+var redis = require('redis');
 var router = express.Router();
 const mysqlConnection = require('../database/mysql-connection');
 const redisConnection = require('../database/redis-connection');
@@ -81,7 +81,7 @@ mysqlConnection
 redisConnection.on("error",function(err){
     console.log("Error: "+err);
 });
-//redisConnection.set("string key","string val", redis.print);
+redisConnection.set("string key","string val", redis.print);
 
 //logs for mongooseConnection
 mongoConnection.on('error',function(err){
