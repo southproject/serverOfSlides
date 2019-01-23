@@ -1,21 +1,26 @@
 var express = require('express');
 var redis = require('redis');
+var log =  require('../log')(module);
 var router = express.Router();
+
+
 const mysqlConnection = require('../database/mysql-connection');
 const redisConnection = require('../database/redis-connection');
 const mongoConnection = require('../database/mongo-connection');
 
-var log =  require('../log')(module);
+
 
 var passport = require('passport');
 var BearerStrategy = require('passport-http-bearer').Strategy;
 //system config params
 var config = require('../config');
 
-//Controller function
+//---MySQL：Controller function---models
 const User_tableC = require('../controller/user_table');
 const Access_tokenC = require('../controller/access_token');
 
+//---MongoDB: Controllers function----model
+const CourseC = require('../controllers/course');
 
 //BearerStrategy adjust for Sequelize to MySQL
 passport.use(new BearerStrategy(
@@ -29,17 +34,8 @@ passport.use(new BearerStrategy(
             if (!token) {
                 return done(null, false);
             }
-            //console.log("--------come in Math.round()---------");
-            //console.log("token: ",token);
             var now = new Date();
             if(Math.round((now-token.created_time)/10000)>config.tokenLifeTime){
-             
-            //console.log("-----now-----");
-            //console.log(now);
-
-             //console.log("----token.created_time---");
-             //console.log(Math.round((Date.now()-token.created_time)/1000));
-             //console.log(token.created_time);
                 
                Access_tokenC.remove(access_token,function(err){
                     if(err){
@@ -99,130 +95,13 @@ router.get('/', passport.authenticate('bearer',{session:false}), function(req,re
 });
 
 
-/**
- * @swagger
- * /api/queryUsers:
- *   get:
- *     tags:
- *       - user
- *     description: 用户查询id-by bing
- *     produces:
- *       - application/json
- *     responses:
- *       200:
- *         description: Successfully
- *
- */
 router.get('/queryUsers', passport.authenticate('bearer',{session:false}), User_tableC.queryUsers);
-
-/**
-* @swagger
-* definitions:
-*   userinfo:
-*     properties:
-*       user_name:
-*         type: bing
-*       passwd:
-*         type: 123456
-*       email:
-*         type: 1542721301@qq.com
-*       phone_num:
-*         type: 13297920692
-*/
-/**
- * @swagger
- * /api/addUsers:
- *   post:
- *     tags:
- *       - user
- *     description: 用户注册-by bing
- *     produces:
- *       - application/json
- *     parameters:
- *      - name: userinfo
- *        description: 用户信息
- *        in: body
- *        required: true
- *        schema: 
- *          $ref: '#/definitions/userinfo'
- *     responses:
- *       200:
- *         description: Successfully
- *
- */
 router.post('/addUsers',passport.authenticate('bearer',{session:false}),User_tableC.addUsers);
-
-/**
- * @swagger
- * /api/queryResultTest:
- *   get:
- *     tags:
- *       - user
- *     description: test resultinfo -by bing
- *     produces:
- *       - application/json
- *     parameters:
- *      - name: user_name
- *        description: user_name
- *        in: query
- *        required: true
- *        type: string
- *      - name: passwd
- *        description: passwd
- *        in: query
- *        required: true
- *        type: string
- *     responses:
- *       200:
- *         description: Successfully
- *
- */
 router.get('/queryResultTest',User_tableC.queryResultTest);
-
-/**
- * @swagger
- * /api/destoryFormatTest:
- *   delete:
- *     tags:
- *       - user
- *     description: 删除返回值测试
- *     produces:
- *       - application/json
- *     parameters:
- *       - name: user_id
- *         description: user_id
- *         in: query
- *         required: true
- *         type: integer
- *     responses:
- *       200:
- *         description: Successfully
- *
- */
 router.delete('/destoryFormatTest',User_tableC.destoryFormatTest);
-
-
-/**
- * @swagger
- * /api/saveUserModel:
- *   get:
- *     tags:
- *       - user
- *     description: test save() function -by bing
- *     produces:
- *       - application/json
- *     parameters:
- *      - name: user_name
- *        description: user_name
- *        in: query
- *        required: true
- *        type: string
- *     responses:
- *       200:
- *         description: Successfully
- *
- */
 router.get('/saveUserModel',User_tableC.saveUserModel);
 
+//MongoDB controller Function
+router.post('/createCourse',CourseC.createCourse);
 
 module.exports = router;
