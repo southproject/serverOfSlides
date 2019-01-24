@@ -3,7 +3,7 @@ var request = require('superagent');
 var baseUrl = 'http://localhost:3000/api';
 
 var courseData = {
-    courseId:2,
+    courseId:1,
     courseName:"除法",
     grade:"一年级",
     subject:"数学",
@@ -19,22 +19,14 @@ var courseData = {
     picture:["除法"]
 }
 
-var courseUpdated = {
-    courseId:2,
-    courseName:'除法',
-    descript:'除法'
-}
-
 test('Create new course', function (t) {
     request
         .post(baseUrl + '/createCourse')
         .send(courseData)
         .end(function (err, res) {
-            // t.equal(res.status, 200, 'response status shoud be 200');
-            // console.log("res.body: ",res.body);
+            console.log("create course success!!!");
             t.end();
         });
-        //log.info("res.body: ",res.body);
 });
 
 test('Delete course', function (t) {
@@ -50,23 +42,19 @@ test('Delete course', function (t) {
 test('Research course', function (t) {
     request
         .get(baseUrl + '/researchCourse')
-        .send({courseId:2})
+        .send({courseId:1})
         .end(function (err, res) {
             console.log("research course success!!!");
             t.end();
         });
 });
 
-// test('Update course', function (t) {
-//     request
-//         .put(baseUrl + '/updateCourse')
-//         .send({courseId:1})
-//         .end(function (err, res) {
-//             // t.equal(res.status, 200, 'response status should be 200');
-//         //    if('course' in req.body){
-//             //    t.equal(req.body['course']['courseId'],courseUpdated['courseId'],'updated course courseId shoud be correct')
-//         //    }
-//             console.log("update course success~~~");
-//             t.end();
-//         });
-// });
+test('Update course', function (t) {
+    request
+        .put(baseUrl + '/updateCourse')
+        .send(courseData)
+        .end(function (err, res) {
+            console.log("update course success~~~");
+            t.end();
+        });
+});

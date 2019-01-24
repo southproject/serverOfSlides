@@ -61,3 +61,55 @@
 {"level":"info","message":"Connected to DB! ","timestamp":"2019-01-23T13:53:49.897Z"}
 {"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T01:21:18.908Z"}
 {"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T01:22:16.011Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T02:08:15.631Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T02:09:04.647Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T02:10:06.070Z"}
+{"level":"error","message":"Course with id: 1 Not Found","timestamp":"2019-01-24T02:10:48.700Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T02:11:57.590Z"}
+{"level":"error","message":"Course with id: 1 Not Found","timestamp":"2019-01-24T02:12:06.124Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T02:14:22.300Z"}
+{"level":"error","message":"Course with id: 1 Not Found","timestamp":"2019-01-24T02:14:28.289Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T02:18:01.488Z"}
+{"level":"error","message":"Course with id: 1 Not Found","timestamp":"2019-01-24T02:18:13.157Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T02:19:57.412Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T02:20:32.930Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T02:21:15.119Z"}
+{"level":"error","message":"Course with id: 1 Not Found","timestamp":"2019-01-24T02:21:20.594Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T02:27:38.420Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T02:28:28.556Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T02:29:23.437Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T02:31:28.849Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T02:41:39.385Z"}
+{"level":"error","message":"Course with id: 1 Not Found","timestamp":"2019-01-24T02:41:44.705Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T02:42:20.779Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T02:43:05.307Z"}
+{"level":"info","message":"Course with id: 1 updated","timestamp":"2019-01-24T02:43:10.643Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T02:44:44.940Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T02:45:32.747Z"}
+{"level":"info","message":"Course with id: 6 updated","timestamp":"2019-01-24T02:45:38.615Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T02:47:56.620Z"}
+{"level":"info","message":"Course with id: 6 updated","timestamp":"2019-01-24T02:48:01.215Z"}
+{"level":"error","message":"Course with id: undefined Not Found","timestamp":"2019-01-24T02:48:38.295Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T02:50:04.019Z"}
+{"level":"info","message":"Course with id: 1 updated","timestamp":"2019-01-24T02:50:09.409Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T02:51:13.292Z"}
+{"level":"info","message":"Course with id: 1 updated","timestamp":"2019-01-24T02:51:18.672Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T02:53:20.528Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T02:54:42.060Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T02:58:45.296Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T03:02:44.977Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T03:03:25.085Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T03:04:39.412Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T03:05:43.662Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T03:10:05.123Z"}
+{"level":"info","message":"New course created with id: 5c492c938198972b48563a40","timestamp":"2019-01-24T03:10:11.613Z"}
+{"level":"info","message":"Course deleted with courseName: 除法","timestamp":"2019-01-24T03:10:11.633Z"}
+{"level":"info","message":"Course with id: 1 updated","timestamp":"2019-01-24T03:10:11.693Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T03:12:20.729Z"}
+{"level":"info","message":"New course created with id: 5c492d1e46a4752ee44f83a5","timestamp":"2019-01-24T03:12:30.793Z"}
+{"level":"info","message":"Course deleted with courseName: 除法","timestamp":"2019-01-24T03:12:30.814Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T03:12:54.658Z"}
+{"level":"info","message":"New course created with id: 5c492d3d14de2a2988a61f25","timestamp":"2019-01-24T03:13:01.024Z"}
+{"level":"info","message":"Course deleted with courseName: 除法","timestamp":"2019-01-24T03:13:01.044Z"}
+{"level":"info","message":"Course with id: 1 researched","timestamp":"2019-01-24T03:13:01.061Z"}
+{"level":"info","message":"Course with id: 1 updated","timestamp":"2019-01-24T03:13:01.072Z"}
