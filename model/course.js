@@ -20,7 +20,7 @@ var Course = new Schema({
     isOpen:{ type:Boolean },
     isEdit:{ type:Boolean },
     catalog:{ type:Array },
-     slides:[slideSchema]
+    slides:[slideSchema]
   })
 
   //create Model

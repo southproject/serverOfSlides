@@ -1,6 +1,6 @@
 var mysql_conf = {
     "username":"root",
-    "password":"root",
+    "password":"",
     "database":"sync",
     "host":"127.0.0.1",
     "dialect":"mysql"
@@ -14,7 +14,7 @@ var redis_conf = {
 }
 
 var mongoose_conf = {
-    uri:"mongodb://localhost/apiDB"
+    uri:"mongodb://localhost/test"
 }
 
 module.exports = {

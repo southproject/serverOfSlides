@@ -5,7 +5,7 @@ var router = express.Router();
 
 
 const mysqlConnection = require('../database/mysql-connection');
-const redisConnection = require('../database/redis-connection');
+// const redisConnection = require('../database/redis-connection');
 const mongoConnection = require('../database/mongo-connection');
 
 
@@ -72,13 +72,13 @@ mysqlConnection
 .catch(err=>{
     console.error('Unable to connect to the mysqlConnection',err);
 });
-
+/*
 //logs for redisConnection
 redisConnection.on("error",function(err){
     console.log("Error: "+err);
 });
 redisConnection.set("string key","string val", redis.print);
-
+*/
 //logs for mongooseConnection
 mongoConnection.on('error',function(err){
     log.error('Connection error: ', err.message);
@@ -103,5 +103,7 @@ router.get('/saveUserModel',User_tableC.saveUserModel);
 
 //MongoDB controller Function
 router.post('/createCourse',CourseC.createCourse);
-
+router.delete('/deleteCourse',CourseC.deleteCourse);
+router.put('/updateCourse',CourseC.updateCourse);
+router.get('/researchCourse',CourseC.researchCourse);
 module.exports = router;
