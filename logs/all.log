@@ -113,3 +113,40 @@
 {"level":"info","message":"Course deleted with courseName: 除法","timestamp":"2019-01-24T03:13:01.044Z"}
 {"level":"info","message":"Course with id: 1 researched","timestamp":"2019-01-24T03:13:01.061Z"}
 {"level":"info","message":"Course with id: 1 updated","timestamp":"2019-01-24T03:13:01.072Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T04:39:41.074Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T04:46:46.802Z"}
+{"level":"info","message":"New course created with id: 5c49433ca0be6108d4f095c9","timestamp":"2019-01-24T04:46:53.798Z"}
+{"level":"info","message":"New course created with id: 5c4943c6a0be6108d4f095cb","timestamp":"2019-01-24T04:49:10.210Z"}
+{"level":"error","message":"Connection error:  failed to connect to server [192.168.99.100:27017] on first connect [MongoNetworkError: connect ECONNREFUSED 192.168.99.100:27017]","timestamp":"2019-01-24T04:51:31.786Z"}
+{"level":"error","message":"Connection error:  failed to connect to server [192.168.99.100:27017] on first connect [MongoNetworkError: connect ECONNREFUSED 192.168.99.100:27017]","timestamp":"2019-01-24T04:52:17.018Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T04:54:28.085Z"}
+{"level":"info","message":"New course created with id: 5c49451272175027c4658510","timestamp":"2019-01-24T04:54:42.400Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T12:29:40.540Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T12:32:33.324Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T12:33:36.447Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T12:35:19.537Z"}
+{"level":"info","message":"New course created with id: 5c49b10b88189a2938990dab","timestamp":"2019-01-24T12:35:23.680Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T12:37:17.979Z"}
+{"level":"info","message":"New course created with id: 5c49b186e356f5295cc03218","timestamp":"2019-01-24T12:37:26.809Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T12:38:40.080Z"}
+{"level":"info","message":"New course created with id: 5c49b1d534a25d246ce191cb","timestamp":"2019-01-24T12:38:45.123Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T12:40:52.420Z"}
+{"level":"info","message":"New course created with id: 5c49b265a95b04245475ec82","timestamp":"2019-01-24T12:41:09.790Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T12:43:23.583Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T12:44:21.380Z"}
+{"level":"info","message":"New course created with id: 5c49b32bb0112519dc460b2f","timestamp":"2019-01-24T12:44:27.667Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T12:45:03.523Z"}
+{"level":"info","message":"New course created with id: 5c49b35ed4233e14b85ee621","timestamp":"2019-01-24T12:45:18.395Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T12:46:36.575Z"}
+{"level":"info","message":"New course created with id: 5c49b3b04e6ca92d885da19e","timestamp":"2019-01-24T12:46:40.398Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T12:48:59.001Z"}
+{"level":"info","message":"New course created with id: 5c49b4404bf1892f744545ef","timestamp":"2019-01-24T12:49:04.437Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T12:52:02.398Z"}
+{"level":"info","message":"New course created with id: 5c49b4f60066f01e381d76c2","timestamp":"2019-01-24T12:52:06.431Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T12:53:10.281Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T12:53:33.729Z"}
+{"level":"info","message":"New course created with id: 5c49b5518039b40434390bf2","timestamp":"2019-01-24T12:53:37.646Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T12:54:45.107Z"}
+{"level":"info","message":"New course created with id: 5c49b59f17152a230c34d4eb","timestamp":"2019-01-24T12:54:55.467Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T12:57:11.615Z"}
+{"level":"info","message":"Course with id: 6 updated","timestamp":"2019-01-24T12:58:50.758Z"}

@@ -3,20 +3,30 @@ var request = require('superagent');
 var baseUrl = 'http://localhost:3000/api';
 
 var courseData = {
-    courseId:1,
-    courseName:"除法",
+    courseId:6,
+    courseName:"一年级数学",
     grade:"一年级",
     subject:"数学",
     descript:"除法",
-    knowledges:["除法"],
+    knowledges:["数，除法"],
     isOpen:1,
     isEdit:1,
-    catalog:["除法"],
+    catalog:["数，除法"],
     pageId:1,
     templateId:1,
     media:["除法"],
     text:["除法"],
-    picture:["除法"]
+    picture:["除法"],
+    pageurl:"./1.png",
+    pagewidth:"100px",
+    pageheight:"100px",
+    fileSize:"100M",
+    scope:"k12教育",
+    addTime:20190124,
+    views:300,
+    url:"./5.png",
+    width:"30px",
+    height:"40px"
 }
 
 test('Create new course', function (t) {

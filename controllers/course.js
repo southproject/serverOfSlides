@@ -14,12 +14,30 @@ function createCourse(req, res){
       isOpen:req.body.isOpen,
       isEdit:req.body.isEdit,
       catalog:req.body.catalog,
+      fileSize:req.body.fileSize,
+      scope:req.body.scope,
+      addTime:req.body.addTime,
+      views:req.body.views,
+      thumbnail:{
+        url:req.body.url,
+        style:{
+            width:req.body.width,
+            height:req.body.height
+        }
+      },
       slides:{
         pageId:req.body.pageId,
         templateId:req.body.templateId,
         media:req.body.media,
         text:req.body.text,
-        picture:req.body.picture
+        picture:req.body.picture,
+        pageThumbnail:{
+            pageurl:req.body.pageurl,
+            style:{
+                pagewidth:req.body.pagewidth,
+                pageheight:req.body.pageheight
+            }
+        }
       }
     })
     course.save(function(err){
@@ -71,12 +89,30 @@ function updateCourse(req,res){
                 isOpen:req.body.isOpen,
                 isEdit:req.body.isEdit,
                 catalog:req.body.catalog,
+                fileSize:req.body.fileSize,
+                scope:req.body.scope,
+                addTime:req.body.addTime,
+                views:req.body.views,
+                thumbnail:{
+                  url:req.body.url,
+                  style:{
+                      width:req.body.width,
+                      height:req.body.height
+                  }
+                },
                 slides:{
                     pageId:req.body.pageId,
                     templateId:req.body.templateId,
                     media:req.body.media,
                     text:req.body.text,
-                    picture:req.body.picture
+                    picture:req.body.picture,
+                    pageThumbnail:{
+                        pageurl:req.body.pageurl,
+                        style:{
+                            pagewidth:req.body.pagewidth,
+                            pageheight:req.body.pageheight
+                        }
+                    }
                   }
               }}
               CourseM.updateOne(condiction, query, (err, result) => {
