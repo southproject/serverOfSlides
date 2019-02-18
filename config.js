@@ -2,19 +2,19 @@ var mysql_conf = {
     "username":"root",
     "password":"root",
     "database":"sync",
-    "host":"192.168.99.100",
+    "host":"127.0.0.1",
     "dialect":"mysql"
 }
 
 var tokenLifeTime = 3600;
 
 var redis_conf = {
-    host:'192.168.99.100',
+    host:'127.0.0.1',
     port:'6379'
 }
 
 var mongoose_conf = {
-    uri:"mongodb://192.168.99.100/apiDB"
+    uri:"mongodb://127.0.0.1/apiDB"
 }
 
 module.exports = {

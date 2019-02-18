@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var api = require('./routes/api');
 var index = require('./routes/index');
+var websocketServer=require('./servers/websocketServer');
 var app = express();
 const swaggerJSDoc = require('swagger-jsdoc');
 
@@ -53,6 +54,8 @@ app.all('*', function(req, res, next) {
   next();
 });
 
+//start server
+//app.use(websocketServer);
 
 app.use('/', index);
 //app.use('/users', users);

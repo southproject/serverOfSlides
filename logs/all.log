@@ -150,3 +150,9 @@
 {"level":"info","message":"New course created with id: 5c49b59f17152a230c34d4eb","timestamp":"2019-01-24T12:54:55.467Z"}
 {"level":"info","message":"Connected to DB! ","timestamp":"2019-01-24T12:57:11.615Z"}
 {"level":"info","message":"Course with id: 6 updated","timestamp":"2019-01-24T12:58:50.758Z"}
+{"level":"error","message":"Connection error:  failed to connect to server [192.168.99.100:27017] on first connect [MongoNetworkError: connect ETIMEDOUT 192.168.99.100:27017]","timestamp":"2019-02-18T04:07:28.033Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-02-18T04:08:08.237Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-02-18T04:25:31.750Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-02-18T04:29:47.891Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-02-18T04:33:14.149Z"}
+{"level":"info","message":"Connected to DB! ","timestamp":"2019-02-18T04:36:07.153Z"}
