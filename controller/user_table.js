@@ -1,9 +1,14 @@
 var Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 var Connection = require('../database/mysql-connection');
+var user_role = require('../models/user_role')
 var user_table = require('../models/user_table');
+var user_role_rel = require('../models/user_role_rel');
 
+var log = require('../log')(module);
 const User_table = user_table(Connection,Sequelize);
+const User_role = user_role(Connection, Sequelize);
+const User_role_rel = user_role_rel(Connection,Sequelize);
 
 //Register
 function addUsers(req,res){
@@ -37,6 +42,88 @@ function addUsers(req,res){
         }
     });
 }
+
+//Register for access
+function register(req,res){
+
+    const username = req.body.username;
+    const passwd = req.body.passwd;
+    const email = req.body.email;
+    const phone_num = req.body.phone_num;
+    const role = req.body.role;
+    //check if repeat name
+    User_table.findOne({
+        where:{
+            user_name:username
+        }
+    }).then(result=>{
+        //log.info("result:",result);
+        if(result==null){
+            //1.first query user_role_id
+            var resultinfo1,resultinfo2;
+            //log.info("result=null");
+            resultinfo2=User_table.create({
+                user_name:username,
+                passwd:passwd,
+                email:email,
+                phone_num:phone_num,
+            })
+
+        resultinfo1=User_role.findOne({
+        attributes:['user_role_id'],
+        where:{role_name:role}
+        })
+        var resultJson = {}
+        resultinfo1.then(result =>{
+            console.log("user_role_id:",result.dataValues.user_role_id);
+            resultJson.user_role_id = result.dataValues.user_role_id;
+            resultinfo2.then(result =>{
+                console.log("user_id:",result.dataValues.user_id);
+                resultJson.user_id = result.dataValues.user_id;
+                User_role_rel.create({
+                    user_id:resultJson.user_id,
+                    user_role_id:resultJson.user_role_id
+                }).then(result=>{
+                    if(result!=null){
+                        let rs1 = {
+                            errorCode:0,
+                            msg:"Register Success!"
+                        }
+                        res.send(rs1);
+                    }else{
+                        let rs2 = {
+                            errorCode:2,
+                            msg:"role relation create failed!"
+                        }
+                        res.send(rs2);
+                    }
+                    
+                })
+            })
+        })
+             
+            
+
+        }else{
+         //Notification for repeat
+         let rs0 = {
+             errorCode:1,
+             msg:"Duplicate name!"
+         }
+         res.send(rs0);
+        }
+        
+    })
+}
+
+
+
+
+
+
+
+
+
 //Login
 function userLogin(req,res){
     
@@ -177,5 +264,6 @@ module.exports={
     destoryFormatTest:destoryFormatTest,
     saveUserModel:saveUserModel,
     findByUsername:findByUsername,
-    findByUserId:findByUserId
+    findByUserId:findByUserId,
+    register:register
 }

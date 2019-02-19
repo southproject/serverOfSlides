@@ -84,7 +84,7 @@ mongoConnection.on('error',function(err){
     log.error('Connection error: ', err.message);
 });
 mongoConnection.once('open', function callback(){
-    log.info('Connected to DB! ');
+    log.info('Connected to MongoDB! ');
 });
 
 
@@ -100,6 +100,7 @@ router.post('/addUsers',passport.authenticate('bearer',{session:false}),User_tab
 router.get('/queryResultTest',User_tableC.queryResultTest);
 router.delete('/destoryFormatTest',User_tableC.destoryFormatTest);
 router.get('/saveUserModel',User_tableC.saveUserModel);
+router.post('/register',User_tableC.register);
 
 //MongoDB controller Function
 router.post('/createCourse',CourseC.createCourse);
