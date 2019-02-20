@@ -313,3 +313,11 @@
 {"level":"info","message":"Course with id: 5c6d3688c3cce422003cd610 updated","timestamp":"2019-02-20T11:19:49.795Z"}
 {"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-20T11:21:03.213Z"}
 {"level":"info","message":"Course deleted with _id: 5c6d3688c3cce422003cd610","timestamp":"2019-02-20T11:21:07.131Z"}
+{"level":"info","message":"New course created with id: 5c6d3ce11779192bf4e99d5d","timestamp":"2019-02-20T11:41:21.251Z"}
+{"level":"error","message":"Connection error:  failed to connect to server [127.0.0.1:27017] on first connect [MongoNetworkError: connect ECONNREFUSED 127.0.0.1:27017]","timestamp":"2019-02-20T11:55:24.001Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-20T11:56:15.662Z"}
+{"level":"info","message":"New course created with id: 5c6d406a50a74d2b4cb2b933","timestamp":"2019-02-20T11:56:26.666Z"}
+{"level":"info","message":"New course created with id: 5c6d407750a74d2b4cb2b938","timestamp":"2019-02-20T11:56:39.085Z"}
+{"level":"info","message":"Course deleted with _id: 5c6d3688c3cce422003cd610","timestamp":"2019-02-20T11:56:39.103Z"}
+{"level":"info","message":"Course with courseId: 5c6d3688c3cce422003cd610 researched","timestamp":"2019-02-20T11:56:39.120Z"}
+{"level":"info","message":"Course with id: 5c6d3688c3cce422003cd610 updated","timestamp":"2019-02-20T11:56:39.132Z"}

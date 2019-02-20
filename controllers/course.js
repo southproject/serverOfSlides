@@ -107,6 +107,7 @@ function updateCourse(req,res){
                 if(!err){
                     log.info('Course with id: %s updated', _id);
                     return res.json({
+                        errorCode: 0,
                         status: 'OK'
                     });
                 }else{
@@ -140,6 +141,7 @@ function researchCourse(req,res){
             res.statusCode = 500;
             log.error('Internal error(%d): %s', res.statusCode, err.message);
             return res.json({
+                errorCode: 1,
                 error: 'Server error'
             });
         }
@@ -156,6 +158,9 @@ function researchCourse(req,res){
             });
         }else{
             log.info('delete course failure',err);
+            return res.json({
+                errorCode: 1
+            });
         }
     })
   }
