@@ -64,14 +64,14 @@ passport.use(new BearerStrategy(
 ));
 
 //logs for MySQLConnection
-// mysqlConnection
-// .authenticate()
-// .then(()=>{
-//     console.log('mysqlConnection Connected Successfully.');
-// })
-// .catch(err=>{
-//     console.error('Unable to connect to the mysqlConnection',err);
-// });
+mysqlConnection
+.authenticate()
+.then(()=>{
+    console.log('mysqlConnection Connected Successfully.');
+})
+.catch(err=>{
+    console.error('Unable to connect to the mysqlConnection',err);
+});
 /*
 //logs for redisConnection
 redisConnection.on("error",function(err){
