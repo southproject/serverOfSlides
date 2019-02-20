@@ -3,8 +3,8 @@ var request = require('superagent');
 var baseUrl = 'http://localhost:3000/api';
 
 var courseData = {
-    _id:"5c6d1cbcefad851f109195ac",
-    courseName:"一年级数学222",
+    _id:"5c6d3688c3cce422003cd610",
+    courseName:"一年级数学5555",
     grade:"一年级222",
     subject:"数学",
     descript:"除法",
@@ -121,35 +121,35 @@ var courseData = {
     height:"40px"
 }
 
-// test('Create new course', function (t) {
-//     request
-//         .post(baseUrl + '/createCourse')
-//         .send(courseData)
-//         .end(function (err, res) {
-//             console.log("create course success!!!");
-//             t.end();
-//         });
-// });
+test('Create new course', function (t) {
+    request
+        .post(baseUrl + '/createCourse')
+        .send(courseData)
+        .end(function (err, res) {
+            console.log("create course success!!!");
+            t.end();
+        });
+});
 
-// test('Delete course', function (t) {
-//     request
-//         .delete(baseUrl + '/deleteCourse')
-//         .send({courseName:'除法'})
-//         .end(function (err, res) {
-//             console.log("delete course success!!!");
-//             t.end();
-//         });
-// });
+test('Delete course', function (t) {
+    request
+        .delete(baseUrl + '/deleteCourse')
+        .send({_id:"5c6d3688c3cce422003cd610"})
+        .end(function (err, res) {
+            console.log("delete course success!!!");
+            t.end();
+        });
+});
 
-// test('Research course', function (t) {
-//     request
-//         .get(baseUrl + '/researchCourse')
-//         .send({courseId:1})
-//         .end(function (err, res) {
-//             console.log("research course success!!!");
-//             t.end();
-//         });
-// });
+test('Research course', function (t) {
+    request
+        .get(baseUrl + '/researchCourse')
+        .send({_id:"5c6d3688c3cce422003cd610"})
+        .end(function (err, res) {
+            console.log("research course success!!!");
+            t.end();
+        });
+});
 
 test('Update course', function (t) {
     request
