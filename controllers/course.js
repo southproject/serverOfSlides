@@ -5,7 +5,6 @@ var log = require('../log')(module);
 //Create course
 function createCourse(req, res){
     var course = new CourseM({
-      courseId:req.body.courseId,
       courseName:req.body.courseName,
       grade:req.body.grade,
       subject:req.body.subject,
@@ -13,7 +12,10 @@ function createCourse(req, res){
       knowledges:req.body.knowledges,
       isOpen:req.body.isOpen,
       isEdit:req.body.isEdit,
-      catalog:req.body.catalog,
+      catalog:{ 
+        children:req.body.children,
+        name:req.body.name
+     },
       fileSize:req.body.fileSize,
       scope:req.body.scope,
       addTime:req.body.addTime,
@@ -26,25 +28,18 @@ function createCourse(req, res){
         }
       },
       slides:{
-        pageId:req.body.pageId,
         templateId:req.body.templateId,
-        media:req.body.media,
-        text:req.body.text,
-        picture:req.body.picture,
-        pageThumbnail:{
-            pageurl:req.body.pageurl,
-            style:{
-                pagewidth:req.body.pagewidth,
-                pageheight:req.body.pageheight
-            }
-        }
+        slide:req.body.slide
       }
     })
     course.save(function(err){
         if (!err) {
             log.info('New course created with id: %s', course.id);
+            console.log("course.catalog=====",JSON.stringify(course.catalog)); 
+            console.log("course.id=====",course.id);                     
             return res.json({
                 errorCode: 0,
+                courseId: course.id,
                 msg: course
             });
         } else {
