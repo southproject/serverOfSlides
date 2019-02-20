@@ -63,54 +63,19 @@ function createCourse(req, res){
     });
 }
 
-//update course
+//update course by _id
 function updateCourse(req,res){
-    var courseId = req.body._id;
-    console.log("courseID-----",courseId)
-    if(!courseId){
+    var _id = req.body._id;
+    console.log("_id-----",_id)
+    if(!_id){
         res.statusCode = 404;
-        log.error('Course with id: %s Not Found', courseId);
+        log.error('Course with id: %s Not Found', _id);
         return res.json({
             error:'Not Found'
         });
 }
-    condiction = {courseId: req.body._id},
+    condiction = {_id: req.body._id},
               query = {$set: {
-                // courseId: req.body.courseId, 
-                // courseName: req.body.courseName,
-                // grade: req.body.grade,
-                // subject: req.body.subject,
-                // descript: req.body.descript,
-                // knowledges:req.body.knowledges,
-                // isOpen:req.body.isOpen,
-                // isEdit:req.body.isEdit,
-                // catalog:req.body.catalog,
-                // fileSize:req.body.fileSize,
-                // scope:req.body.scope,
-                // addTime:req.body.addTime,
-                // views:req.body.views,
-                // thumbnail:{
-                //   url:req.body.url,
-                //   style:{
-                //       width:req.body.width,
-                //       height:req.body.height
-                //   }
-                // },
-                // slides:{
-                //     pageId:req.body.pageId,
-                //     templateId:req.body.templateId,
-                //     media:req.body.media,
-                //     text:req.body.text,
-                //     picture:req.body.picture,
-                //     pageThumbnail:{
-                //         pageurl:req.body.pageurl,
-                //         style:{
-                //             pagewidth:req.body.pagewidth,
-                //             pageheight:req.body.pageheight
-                //         }
-                //     }
-                //   }
-
                   courseName:req.body.courseName,
                   grade:req.body.grade,
                   subject:req.body.subject,
@@ -140,7 +105,7 @@ function updateCourse(req,res){
               }}
               CourseM.updateOne(condiction, query, (err, result) => {
                 if(!err){
-                    log.info('Course with id: %s updated', courseId);
+                    log.info('Course with id: %s updated', _id);
                     return res.json({
                         status: 'OK'
                     });
@@ -161,13 +126,12 @@ function updateCourse(req,res){
           })
 }
 
-//research course
+//research course by _id
 function researchCourse(req,res){
-    CourseM.find({courseId:req.body.courseId},(err,result) => {
-        // 为什么slides是undefined呢
-        // console.log('result.slides.pageId---',result.slides.pageId)
+    CourseM.find({_id:req.body._id},(err,result) => {
         if(!err){
-            log.info('Course with id: %s researched', req.body.courseId);
+            log.info('Course with courseId: %s researched', req.body._id);
+            // console.log("research result==",result);
             return res.json({
                 errorCode: 0,
                 msg: result
@@ -182,11 +146,11 @@ function researchCourse(req,res){
     })
 }
 
-//delete course
+//delete course by _id
   function deleteCourse(req,res){
-    CourseM.deleteOne({courseName:req.body.courseName},(err,result)=>{
+    CourseM.deleteMany({_id:req.body._id},(err,result)=>{
         if(!err){
-            log.info('Course deleted with courseName: %s', req.body.courseName);
+            log.info('Course deleted with _id: %s', req.body._id);
             return res.json({
                 errorCode: 0
             });
