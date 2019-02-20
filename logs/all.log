@@ -242,3 +242,24 @@
 {"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-20T08:47:02.771Z"}
 {"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-20T08:47:45.093Z"}
 >>>>>>> 5ac5d2e672032d2818dc331f9f94443555e2f6a8
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-20T09:37:30.490Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-20T10:44:15.736Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-20T10:59:57.470Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-20T12:05:42.095Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-20T12:41:35.347Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-20T12:53:26.946Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-20T12:55:26.769Z"}
+{"level":"info","message":"New course created with id: 5c6d4e676e31664ccca97012","timestamp":"2019-02-20T12:56:07.760Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-20T12:58:41.808Z"}
+{"level":"info","message":"New course created with id: 5c6d4f06a6c5e61c3c2da477","timestamp":"2019-02-20T12:58:47.053Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-20T13:00:14.987Z"}
+{"level":"info","message":"New course created with id: 5c6d4f62e3b966062cad117f","timestamp":"2019-02-20T13:00:18.234Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-20T13:03:18.478Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-20T13:07:29.492Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-20T13:10:23.615Z"}
+{"level":"info","message":"New course created with id: 5c6d51c22866f42758314a84","timestamp":"2019-02-20T13:10:26.452Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-20T13:13:36.634Z"}
+{"level":"info","message":"New course created with id: 5c6d55b330265e3170467620","timestamp":"2019-02-20T13:27:15.087Z"}
+{"level":"info","message":"New course created with id: 5c6d55f630265e3170467623","timestamp":"2019-02-20T13:28:22.719Z"}
+{"level":"error","message":"Connection error:  failed to connect to server [127.0.0.1:27017] on first connect [MongoNetworkError: connect ECONNREFUSED 127.0.0.1:27017]","timestamp":"2019-02-20T13:37:30.819Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-20T13:38:03.536Z"}

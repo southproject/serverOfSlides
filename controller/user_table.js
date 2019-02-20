@@ -334,32 +334,39 @@ function updateInfo(req,res){
 
 /*----personal_info--Model-----*/
 //get personal userinfo
-function getPersonalInfo(req,res){
+function getPersonalInfo(req, res) {
     const user_id = req.query.user_id;
 
     Personal_info.findOne({
-        where:{
-            user_id:user_id
+        where: {
+            user_id: user_id
         }
-    }).then(result=>{
-        if(result!=null){
-           let rs0 ={
-               errorCode:0,
-               msg:result
-           }
-           res.send(rs0);
-        }else{
-            let rs1 = {
-                errorCode:1,
-                msg:"can not find this user pesonal info!"
+    }).then(result => {
+        if (result != null) {
+            let rs0 = {
+                errorCode: 0,
+                msg: result
             }
-
+            res.send(rs0);
+        } else {
+            let message = {
+                nick_name:"fresh man",
+                position:"green hand",
+                city:"wuhan",
+                sexy:"secret",
+                description:"~"
+            }
+            let rs1 = {
+                errorCode: 1,
+                msg: message
+            }
+           res.send(rs1);
         }
     })
 }
 
 //Update PersonalInfo
-function updatePersonalInfo(req,res){
+function updatePersonalInfo(req, res) {
     const user_id = req.body.user_id;
     const nick_name = req.body.nick_name;
     const position = req.body.position;
@@ -369,30 +376,31 @@ function updatePersonalInfo(req,res){
 
     Personal_info.update({
 
-        nick_name:nick_name,
-        position:position,
-        city:city,
-        sexy:sexy,
-        description:description
+        nick_name: nick_name,
+        position: position,
+        city: city,
+        sexy: sexy,
+        description: description
     },
-      {  where:{
-            user_id:user_id
-        }
-    }).then(result=>{
-        if (result != 0) {
-            let rs0 = {
-                errorCode: 0,
-                msg: "success"
+        {
+            where: {
+                user_id: user_id
             }
-            res.send(rs0);
-        } else {
-            let rs1 = {
-                errorCode: 1,
-                msg: "failure"
+        }).then(result => {
+            if (result != 0) {
+                let rs0 = {
+                    errorCode: 0,
+                    msg: "success"
+                }
+                res.send(rs0);
+            } else {
+                let rs1 = {
+                    errorCode: 1,
+                    msg: "failure"
+                }
+                res.send(rs1);
             }
-            res.send(rs1);
-        }
-    })
+        })
 }
 
 

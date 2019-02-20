@@ -1,4 +1,4 @@
 node_modules
 .vscode
-logs/all.log
 config.js
+logs/all.log
