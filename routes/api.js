@@ -101,10 +101,16 @@ router.get('/queryResultTest',User_tableC.queryResultTest);
 router.delete('/destoryFormatTest',User_tableC.destoryFormatTest);
 router.get('/saveUserModel',User_tableC.saveUserModel);
 router.post('/register',User_tableC.register);
+router.get('/queryUserinfo',passport.authenticate('bearer',{session:false}),User_tableC.queryUserinfo);
+router.put('/updateInfo',passport.authenticate('bearer',{session:false}),User_tableC.updateInfo);
+router.get('/getPersonalInfo',passport.authenticate('bearer',{session:false}),User_tableC.getPersonalInfo);
+router.put('/updatePersonalInfo',passport.authenticate('bearer',{session:false}),User_tableC.updatePersonalInfo);
+
 
 //MongoDB controller Function
 router.post('/createCourse',CourseC.createCourse);
 router.delete('/deleteCourse',CourseC.deleteCourse);
 router.put('/updateCourse',CourseC.updateCourse);
 router.get('/researchCourse',CourseC.researchCourse);
+
 module.exports = router;

@@ -3,8 +3,9 @@ var request = require('superagent');
 var baseUrl = 'http://localhost:3000/api';
 
 var courseData = {
-    courseName:"一年级数学",
-    grade:"一年级",
+    _id:"5c6d1cbcefad851f109195ac",
+    courseName:"一年级数学222",
+    grade:"一年级222",
     subject:"数学",
     descript:"除法",
     //知识点
@@ -120,15 +121,15 @@ var courseData = {
     height:"40px"
 }
 
-test('Create new course', function (t) {
-    request
-        .post(baseUrl + '/createCourse')
-        .send(courseData)
-        .end(function (err, res) {
-            console.log("create course success!!!");
-            t.end();
-        });
-});
+// test('Create new course', function (t) {
+//     request
+//         .post(baseUrl + '/createCourse')
+//         .send(courseData)
+//         .end(function (err, res) {
+//             console.log("create course success!!!");
+//             t.end();
+//         });
+// });
 
 // test('Delete course', function (t) {
 //     request
@@ -150,12 +151,12 @@ test('Create new course', function (t) {
 //         });
 // });
 
-// test('Update course', function (t) {
-//     request
-//         .put(baseUrl + '/updateCourse')
-//         .send(courseData)
-//         .end(function (err, res) {
-//             console.log("update course success~~~");
-//             t.end();
-//         });
-// });
+test('Update course', function (t) {
+    request
+        .put(baseUrl + '/updateCourse')
+        .send(courseData)
+        .end(function (err, res) {
+            console.log("update course success~~~");
+            t.end();
+        });
+});

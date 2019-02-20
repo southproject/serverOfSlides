@@ -65,7 +65,8 @@ function createCourse(req, res){
 
 //update course
 function updateCourse(req,res){
-    var courseId = req.body.courseId;
+    var courseId = req.body._id;
+    console.log("courseID-----",courseId)
     if(!courseId){
         res.statusCode = 404;
         log.error('Course with id: %s Not Found', courseId);
@@ -73,41 +74,68 @@ function updateCourse(req,res){
             error:'Not Found'
         });
 }
-    condiction = {courseId: req.body.courseId},
+    condiction = {courseId: req.body._id},
               query = {$set: {
-                courseId: req.body.courseId, 
-                courseName: req.body.courseName,
-                grade: req.body.grade,
-                subject: req.body.subject,
-                descript: req.body.descript,
-                knowledges:req.body.knowledges,
-                isOpen:req.body.isOpen,
-                isEdit:req.body.isEdit,
-                catalog:req.body.catalog,
-                fileSize:req.body.fileSize,
-                scope:req.body.scope,
-                addTime:req.body.addTime,
-                views:req.body.views,
-                thumbnail:{
-                  url:req.body.url,
-                  style:{
-                      width:req.body.width,
-                      height:req.body.height
-                  }
-                },
-                slides:{
-                    pageId:req.body.pageId,
-                    templateId:req.body.templateId,
-                    media:req.body.media,
-                    text:req.body.text,
-                    picture:req.body.picture,
-                    pageThumbnail:{
-                        pageurl:req.body.pageurl,
-                        style:{
-                            pagewidth:req.body.pagewidth,
-                            pageheight:req.body.pageheight
-                        }
+                // courseId: req.body.courseId, 
+                // courseName: req.body.courseName,
+                // grade: req.body.grade,
+                // subject: req.body.subject,
+                // descript: req.body.descript,
+                // knowledges:req.body.knowledges,
+                // isOpen:req.body.isOpen,
+                // isEdit:req.body.isEdit,
+                // catalog:req.body.catalog,
+                // fileSize:req.body.fileSize,
+                // scope:req.body.scope,
+                // addTime:req.body.addTime,
+                // views:req.body.views,
+                // thumbnail:{
+                //   url:req.body.url,
+                //   style:{
+                //       width:req.body.width,
+                //       height:req.body.height
+                //   }
+                // },
+                // slides:{
+                //     pageId:req.body.pageId,
+                //     templateId:req.body.templateId,
+                //     media:req.body.media,
+                //     text:req.body.text,
+                //     picture:req.body.picture,
+                //     pageThumbnail:{
+                //         pageurl:req.body.pageurl,
+                //         style:{
+                //             pagewidth:req.body.pagewidth,
+                //             pageheight:req.body.pageheight
+                //         }
+                //     }
+                //   }
+
+                  courseName:req.body.courseName,
+                  grade:req.body.grade,
+                  subject:req.body.subject,
+                  descript:req.body.descript,
+                  knowledges:req.body.knowledges,
+                  isOpen:req.body.isOpen,
+                  isEdit:req.body.isEdit,
+                  catalog:{ 
+                    children:req.body.children,
+                    name:req.body.name
+                 },
+                  fileSize:req.body.fileSize,
+                  scope:req.body.scope,
+                  addTime:req.body.addTime,
+                  views:req.body.views,
+                  thumbnail:{
+                    url:req.body.url,
+                    style:{
+                        width:req.body.width,
+                        height:req.body.height
                     }
+                  },
+                  slides:{
+                    templateId:req.body.templateId,
+                    slide:req.body.slide
                   }
               }}
               CourseM.updateOne(condiction, query, (err, result) => {
