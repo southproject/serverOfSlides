@@ -14,6 +14,7 @@
     "debug": "~2.6.3",
     "express": "^4.16.4",
     "jade": "~1.11.0",
+    "jszip": "^3.1.5",
     "mongoose": "^5.4.6",
     "morgan": "^1.9.1",
     "mysql2": "^1.6.4",
@@ -33,6 +34,7 @@
     "superagent": "^4.1.0",
     "swagger-jsdoc": "^3.2.5",
     "tape": "^4.9.2",
-    "winston": "^2.4.x"
+    "winston": "^2.4.x",
+    "xml2js": "^0.4.19"
   }
 }

@@ -3,7 +3,6 @@ var Schema = mongoose.Schema;
 
 //create Schema
 var Course = new Schema({
-    // courseId:{ type: Number, required: true },
     courseName:{ type:String },
     grade:{ type:String },
     subject:{ type:String },
@@ -36,19 +35,20 @@ var Course = new Schema({
         slide:[
             {
                 pageId:{ type: Number},
-                media:{ type: Array },
-                images:{type:Array},
-                audio:{type:Array},
-                video:{type:Array},
-                text:{ type: Array },
-                picture:{ type: Array },
+                // media:{ type: Array },
+                // images:{type:Array},
+                // audio:{type:Array},
+                // video:{type:Array},
+                // text:{ type: Array },
+                // picture:{ type: Array },
                 pageThumbnail:{
                     pageurl:String,
                     style:{
                         pagewidth:String,
                         pageheight:String
                     }
-                }
+                },
+                media:{type:Array}
             }
         ]
     }

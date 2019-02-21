@@ -114,5 +114,6 @@ router.post('/createCourse',CourseC.createCourse);
 router.delete('/deleteCourse',CourseC.deleteCourse);
 router.put('/updateCourse',CourseC.updateCourse);
 router.get('/researchCourse',CourseC.researchCourse);
+router.get('/downloadCourse',CourseC.downloadCourse);
 
 module.exports = router;

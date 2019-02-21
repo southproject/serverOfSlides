@@ -63,7 +63,6 @@ app.use('/api',api);
 console.log("---App.js---");
 //app.use('/api/oauth/token',oauth2.token);
 app.use('/api/oauth',oauth);
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
