@@ -351,3 +351,20 @@
 {"level":"info","message":"New course created with id: 5c6e5ac7f9a86548784fec68","timestamp":"2019-02-21T08:01:11.225Z"}
 {"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T08:02:27.480Z"}
 {"level":"info","message":"New course created with id: 5c6e5b16583b4a4610d0ae13","timestamp":"2019-02-21T08:02:30.674Z"}
+{"level":"error","message":"Connection error:  failed to connect to server [127.0.0.1:27017] on first connect [MongoNetworkError: connect ECONNREFUSED 127.0.0.1:27017]","timestamp":"2019-02-21T08:19:46.933Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T08:20:18.217Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T08:20:39.354Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T08:22:02.358Z"}
+{"level":"info","message":"New course created with id: 5c6e5fde8a4a0f1ec8d7a659","timestamp":"2019-02-21T08:22:54.740Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T08:23:52.231Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T08:26:55.404Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T08:28:21.492Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T08:30:49.260Z"}
+{"level":"info","message":"New course created with id: 5c6e61fb880d8b2c84e28c03","timestamp":"2019-02-21T08:31:56.002Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T08:33:47.822Z"}
+{"level":"info","message":"New course created with id: 5c6e626f6a184d267479f1eb","timestamp":"2019-02-21T08:33:51.468Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T08:35:47.811Z"}
+{"level":"info","message":"New course created with id: 5c6e62fbc1524819b027ec73","timestamp":"2019-02-21T08:36:11.962Z"}
+{"level":"info","message":"Course deleted with _id: 5c6e62fbc1524819b027ec73","timestamp":"2019-02-21T08:37:16.007Z"}
+{"level":"info","message":"Course with courseId: 5c6e626f6a184d267479f1eb researched","timestamp":"2019-02-21T08:37:51.606Z"}
+{"level":"info","message":"Course with id: 5c6e626f6a184d267479f1eb updated","timestamp":"2019-02-21T08:38:58.371Z"}

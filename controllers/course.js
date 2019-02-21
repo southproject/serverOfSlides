@@ -1,6 +1,12 @@
 const mongoConnection = require('../database/mongo-connection');
 var CourseM = require('../model/course');
 var log = require('../log')(module);
+var JSZip = require("jszip");
+var fs = require('fs');
+var path = require('path');
+var xml2js = require('xml2js');
+
+var builder = new xml2js.Builder();  // JSON->xml
 
 //add user_project_rel MySQL table
 var Sequelize = require('sequelize');
@@ -8,8 +14,6 @@ var Connection = require('../database/mysql-connection');
 var user_project_rel = require('../models/user_project_rel');
 
 const User_project_rel = user_project_rel(Connection,Sequelize);
-
-
 
 //Create course
 function createCourse(req, res){
@@ -183,9 +187,62 @@ function researchCourse(req,res){
     })
   }
 
+//download course
+function downloadCourse(req, res){
+    CourseM.find({_id:req.body._id},(err,result) => {
+        console.log("downloadCourse===",result);
+        if(!err){
+            log.info('Course with courseId: %s download', req.body._id);
+            var zip = new JSZip();
+
+            xml =  builder.buildObject(JSON.stringify(result));
+            console.log('json2xml----',xml);
+            zip.folder("media").file("index.txt", JSON.stringify(result));
+
+            // zip.folder("media").folder("images").file('11.jpg',fs.readFileSync('D:/Graduate/11.jpg'));  
+            // // zip.folder("media").folder("audio").file('text.txt',{result});             
+            // zip.file('slide.txt','这里是内容');
+            // 压缩
+            zip.generateAsync({
+                // 压缩类型选择nodebuffer，在回调函数中会返回zip压缩包的Buffer的值，再利用fs保存至本地
+                type: "nodebuffer",
+                // 压缩算法
+                compression: "DEFLATE",
+                compressionOptions: {
+                    level: 9
+                }
+            }).then(function (content) {
+                let zip = '中国风课件.zip';
+                // 写入磁盘
+                fs.writeFile('D:/Graduate/jszip/' + zip , content, function (err) {
+                    if (!err) {
+                        // 写入磁盘成功
+                        console.log(zip + '压缩成功');
+                    } else {
+                        console.log(zip + '压缩失败');
+                    }
+                });
+            });
+    
+            return res.json({
+                errorCode: 0,
+                msg: result
+            });
+        }else{
+            res.statusCode = 500;
+            log.error('Internal error(%d): %s', res.statusCode, err.message);
+            return res.json({
+                errorCode: 1,
+                error: 'Server error'
+            });
+        }
+    })
+}
+
 module.exports={
     createCourse:createCourse,
     deleteCourse:deleteCourse,
     updateCourse:updateCourse,
     researchCourse:researchCourse,
+    downloadCourse:downloadCourse
 }
