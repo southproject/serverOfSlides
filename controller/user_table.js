@@ -1,5 +1,4 @@
 var Sequelize = require('sequelize');
-const Op = Sequelize.Op;
 var Connection = require('../database/mysql-connection');
 var user_role = require('../models/user_role')
 var user_table = require('../models/user_table');

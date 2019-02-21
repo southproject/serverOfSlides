@@ -12,59 +12,64 @@ const User_project_rel = user_project_rel(Connection,Sequelize);
 
 
 //Create course
-function createCourse(req, res){
+function createCourse(req, res) {
     var course = new CourseM({
-      courseName:req.body.courseName,
-      grade:req.body.grade,
-      subject:req.body.subject,
-      descript:req.body.descript,
-      knowledges:req.body.knowledges,
-      isOpen:req.body.isOpen,
-      isEdit:req.body.isEdit,
-      catalog:{ 
-        children:req.body.children,
-        name:req.body.name
-     },
-      fileSize:req.body.fileSize,
-      scope:req.body.scope,
-      addTime:req.body.addTime,
-      views:req.body.views,
-      thumbnail:{
-        url:req.body.url,
-        style:{
-            width:req.body.width,
-            height:req.body.height
+        courseName: req.body.courseName,
+        grade: req.body.grade,
+        subject: req.body.subject,
+        descript: req.body.descript,
+        knowledges: req.body.knowledges,
+        isOpen: req.body.isOpen,
+        isEdit: req.body.isEdit,
+        catalog: {
+            children: req.body.children,
+            name: req.body.name
+        },
+        fileSize: req.body.fileSize,
+        scope: req.body.scope,
+        addTime: req.body.addTime,
+        views: req.body.views,
+        thumbnail: {
+            url: req.body.url,
+            style: {
+                width: req.body.width,
+                height: req.body.height
+            }
+        },
+        slides: {
+            templateId: req.body.templateId,
+            slide: req.body.slide
         }
-      },
-      slides:{
-        templateId:req.body.templateId,
-        slide:req.body.slide
-      }
     })
-    course.save(function(err){
+    course.save(function (err) {
         if (!err) {
             log.info('New course created with id: %s', course.id);
-            console.log("course.catalog=====",JSON.stringify(course.catalog)); 
-            console.log("course.id=====",course.id); 
+            console.log("course.catalog=====", JSON.stringify(course.catalog));
+            console.log("course.id=====", course.id);
             User_project_rel.create({
-                user_id:req.body.user_id,
-                project_id:course.id,
+                user_id: req.body.user_id,
+                project_id: course.id,
                 hoster: 1
-            }).then(result=>{
-                if(result.length!=0){
+            }).then(result => {
+                if (result.length != 0) {
                     let rs0 = {
-                        errorCode:0,
-                        courseId:course.id,
-                        msg:course
+                        errorCode: 0,
+                        courseId: course.id,
+                        msg: course
                     }
                     res.send(rs0);
+                } else {
+                    res.json({
+                        errorCode: 3,
+                        msg: 'Create relation error'
+                    });
                 }
             })
         } else {
             if (err.name === 'ValidationError') {
                 res.statusCode = 400;
                 res.json({
-                    errorCode:1,
+                    errorCode: 1,
                     msg: 'Validation error'
                 });
             } else {
@@ -73,7 +78,7 @@ function createCourse(req, res){
                 log.error('Internal error(%d): %s', res.statusCode, err.message);
 
                 res.json({
-                    errorCode:2,
+                    errorCode: 2,
                     msg: 'Server error'
                 });
             }

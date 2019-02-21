@@ -5,7 +5,7 @@ var router = express.Router();
 
 
 const mysqlConnection = require('../database/mysql-connection');
-// const redisConnection = require('../database/redis-connection');
+const redisConnection = require('../database/redis-connection');
 const mongoConnection = require('../database/mongo-connection');
 
 
@@ -17,6 +17,7 @@ var config = require('../config');
 
 //---MySQL：Controller function---models
 const User_tableC = require('../controller/user_table');
+const User_project_relC = require('../controller/user_project_rel');
 const Access_tokenC = require('../controller/access_token');
 
 //---MongoDB: Controllers function----model
@@ -72,13 +73,13 @@ mysqlConnection
 .catch(err=>{
     console.error('Unable to connect to the mysqlConnection',err);
 });
-/*
+
 //logs for redisConnection
 redisConnection.on("error",function(err){
     console.log("Error: "+err);
 });
 redisConnection.set("string key","string val", redis.print);
-*/
+
 //logs for mongooseConnection
 mongoConnection.on('error',function(err){
     log.error('Connection error: ', err.message);
@@ -105,6 +106,7 @@ router.get('/queryUserinfo',passport.authenticate('bearer',{session:false}),User
 router.put('/updateInfo',passport.authenticate('bearer',{session:false}),User_tableC.updateInfo);
 router.get('/getPersonalInfo',passport.authenticate('bearer',{session:false}),User_tableC.getPersonalInfo);
 router.put('/updatePersonalInfo',passport.authenticate('bearer',{session:false}),User_tableC.updatePersonalInfo);
+router.post('/joinProjectRelationShip',passport.authenticate('bearer',{session:false}),User_project_relC.joinProjectRelationShip);
 
 
 //MongoDB controller Function

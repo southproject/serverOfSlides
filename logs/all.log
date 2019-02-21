@@ -351,3 +351,5 @@
 {"level":"info","message":"New course created with id: 5c6e5ac7f9a86548784fec68","timestamp":"2019-02-21T08:01:11.225Z"}
 {"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T08:02:27.480Z"}
 {"level":"info","message":"New course created with id: 5c6e5b16583b4a4610d0ae13","timestamp":"2019-02-21T08:02:30.674Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T08:38:00.630Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T08:41:49.307Z"}
