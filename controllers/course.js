@@ -16,64 +16,59 @@ var user_project_rel = require('../models/user_project_rel');
 const User_project_rel = user_project_rel(Connection,Sequelize);
 
 //Create course
-function createCourse(req, res) {
+function createCourse(req, res){
     var course = new CourseM({
-        courseName: req.body.courseName,
-        grade: req.body.grade,
-        subject: req.body.subject,
-        descript: req.body.descript,
-        knowledges: req.body.knowledges,
-        isOpen: req.body.isOpen,
-        isEdit: req.body.isEdit,
-        catalog: {
-            children: req.body.children,
-            name: req.body.name
-        },
-        fileSize: req.body.fileSize,
-        scope: req.body.scope,
-        addTime: req.body.addTime,
-        views: req.body.views,
-        thumbnail: {
-            url: req.body.url,
-            style: {
-                width: req.body.width,
-                height: req.body.height
-            }
-        },
-        slides: {
-            templateId: req.body.templateId,
-            slide: req.body.slide
+      courseName:req.body.courseName,
+      grade:req.body.grade,
+      subject:req.body.subject,
+      descript:req.body.descript,
+      knowledges:req.body.knowledges,
+      isOpen:req.body.isOpen,
+      isEdit:req.body.isEdit,
+      catalog:{ 
+        children:req.body.children,
+        name:req.body.name
+     },
+      fileSize:req.body.fileSize,
+      scope:req.body.scope,
+      addTime:req.body.addTime,
+      views:req.body.views,
+      thumbnail:{
+        url:req.body.url,
+        style:{
+            width:req.body.width,
+            height:req.body.height
         }
+      },
+      slides:{
+        templateId:req.body.templateId,
+        slide:req.body.slide
+      }
     })
-    course.save(function (err) {
+    course.save(function(err){
         if (!err) {
             log.info('New course created with id: %s', course.id);
-            console.log("course.catalog=====", JSON.stringify(course.catalog));
-            console.log("course.id=====", course.id);
+            console.log("course.catalog=====",JSON.stringify(course.catalog)); 
+            console.log("course.id=====",course.id); 
             User_project_rel.create({
-                user_id: req.body.user_id,
-                project_id: course.id,
+                user_id:req.body.user_id,
+                project_id:course.id,
                 hoster: 1
-            }).then(result => {
-                if (result.length != 0) {
+            }).then(result=>{
+                if(result.length!=0){
                     let rs0 = {
-                        errorCode: 0,
-                        courseId: course.id,
-                        msg: course
+                        errorCode:0,
+                        courseId:course.id,
+                        msg:course
                     }
                     res.send(rs0);
-                } else {
-                    res.json({
-                        errorCode: 3,
-                        msg: 'Create relation error'
-                    });
                 }
             })
         } else {
             if (err.name === 'ValidationError') {
                 res.statusCode = 400;
                 res.json({
-                    errorCode: 1,
+                    errorCode:1,
                     msg: 'Validation error'
                 });
             } else {
@@ -82,7 +77,7 @@ function createCourse(req, res) {
                 log.error('Internal error(%d): %s', res.statusCode, err.message);
 
                 res.json({
-                    errorCode: 2,
+                    errorCode:2,
                     msg: 'Server error'
                 });
             }
@@ -195,18 +190,66 @@ function researchCourse(req,res){
 //download course
 function downloadCourse(req, res){
     CourseM.find({_id:req.body._id},(err,result) => {
-        console.log("downloadCourse===",result);
         if(!err){
             log.info('Course with courseId: %s download', req.body._id);
             var zip = new JSZip();
-
-            xml =  builder.buildObject(JSON.stringify(result));
-            console.log('json2xml----',xml);
-            zip.folder("media").file("index.txt", JSON.stringify(result));
-
-            // zip.folder("media").folder("images").file('11.jpg',fs.readFileSync('D:/Graduate/11.jpg'));  
-            // // zip.folder("media").folder("audio").file('text.txt',{result});             
-            // zip.file('slide.txt','这里是内容');
+            for (var i = 0; i < result[0].slides.slide.length; i++) {
+                for(var j=0;j<result[0].slides.slide[i].media.length;j++){
+                    for(var k=0;k<result[0].catalog.children.length;k++){
+                        var obj = {
+                            courseName:JSON.stringify(result[0].courseName),
+                            grade:JSON.stringify(result[0].grade),
+                            subject:JSON.stringify(result[0].subject),
+                            descript:JSON.stringify(result[0].descript),
+                            knowledges:JSON.stringify(result[0].knowledges),
+                            isOpen:JSON.stringify(result[0].isOpen),
+                            isEdit:JSON.stringify(result[0].isEdit),
+                            catalog:{ 
+                                children:{
+                                    // children:JSON.stringify(result[0].catalog.children[k].children),
+                                    name:JSON.stringify(result[0].catalog.children[0].name)
+                                },
+                                name:JSON.stringify(result[0].catalog.name)
+                            },
+                            fileSize:JSON.stringify(result[0].fileSize),
+                            scope:JSON.stringify(result[0].scope),
+                            addTime:JSON.stringify(result[0].addTime),
+                            views:JSON.stringify(result[0].views),
+                            thumbnail:{
+                                url:JSON.stringify(result[0].thumbnail.url),
+                                style:{
+                                    width:JSON.stringify(result[0].thumbnail.style.width),
+                                    height:JSON.stringify(result[0].thumbnail.style.height)
+                                }
+                            },
+                            slides:{
+                                templateId:JSON.stringify(result[0].slides.templateId),
+                                slide:[{
+                                    pageId:JSON.stringify(result[0].slides.slide[i].pageId),
+                                    pageurl:JSON.stringify(result[0].slides.slide[i].pageThumbnail.pageurl),
+                                    pagewidth:JSON.stringify(result[0].slides.slide[i].pageThumbnail.style.pagewidth),
+                                    pageheight:JSON.stringify(result[0].slides.slide[i].pageThumbnail.style.pageheight),
+                                    media:{
+                                        id:JSON.stringify(result[0].slides.slide[i].media[j].id),
+                                        position:JSON.stringify(result[0].slides.slide[i].media[j].position),
+                                        rotation:JSON.stringify(result[0].slides.slide[i].media[j].rotation),
+                                        scale:JSON.stringify(result[0].slides.slide[i].media[j].scale),
+                                        shape:JSON.stringify(result[0].slides.slide[i].media[j].shape),
+                                        style:JSON.stringify(result[0].slides.slide[i].media[j].style),
+                                        type:JSON.stringify(result[0].slides.slide[i].media[j].type)
+                                    }
+                                }]
+                            }
+                        }
+                    }
+                 }
+            }
+            xml =  builder.buildObject(obj);
+            zip.file("index.xml", xml);
+            zip.folder("media").folder("audio");
+            zip.folder("media").folder("video");
+            zip.folder("media").folder("images");
+            zip.folder("slides");
             // 压缩
             zip.generateAsync({
                 // 压缩类型选择nodebuffer，在回调函数中会返回zip压缩包的Buffer的值，再利用fs保存至本地
@@ -217,7 +260,7 @@ function downloadCourse(req, res){
                     level: 9
                 }
             }).then(function (content) {
-                let zip = '中国风课件.zip';
+                let zip = result[0].courseName+'.zip';
                 // 写入磁盘
                 fs.writeFile('D:/Graduate/jszip/' + zip , content, function (err) {
                     if (!err) {
@@ -228,7 +271,6 @@ function downloadCourse(req, res){
                     }
                 });
             });
-    
             return res.json({
                 errorCode: 0,
                 msg: result
