@@ -2,6 +2,15 @@ const mongoConnection = require('../database/mongo-connection');
 var CourseM = require('../model/course');
 var log = require('../log')(module);
 
+//add user_project_rel MySQL table
+var Sequelize = require('sequelize');
+var Connection = require('../database/mysql-connection');
+var user_project_rel = require('../models/user_project_rel');
+
+const User_project_rel = user_project_rel(Connection,Sequelize);
+
+
+
 //Create course
 function createCourse(req, res){
     var course = new CourseM({
@@ -36,12 +45,21 @@ function createCourse(req, res){
         if (!err) {
             log.info('New course created with id: %s', course.id);
             console.log("course.catalog=====",JSON.stringify(course.catalog)); 
-            console.log("course.id=====",course.id);                     
-            return res.json({
-                errorCode: 0,
-                courseId: course.id,
-                msg: course
-            });
+            console.log("course.id=====",course.id); 
+            User_project_rel.create({
+                user_id:req.body.user_id,
+                project_id:course.id,
+                hoster: 1
+            }).then(result=>{
+                if(result.length!=0){
+                    let rs0 = {
+                        errorCode:0,
+                        courseId:course.id,
+                        msg:course
+                    }
+                    res.send(rs0);
+                }
+            })
         } else {
             if (err.name === 'ValidationError') {
                 res.statusCode = 400;

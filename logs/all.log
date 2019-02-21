@@ -345,3 +345,9 @@
 {"level":"info","message":"Course with courseId: 5c6d3688c3cce422003cd610 researched","timestamp":"2019-02-20T11:56:39.120Z"}
 {"level":"info","message":"Course with id: 5c6d3688c3cce422003cd610 updated","timestamp":"2019-02-20T11:56:39.132Z"}
 >>>>>>> 5a8a4a3166f70c099b600f706f09ee7e38bde61a
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T07:59:28.487Z"}
+{"level":"info","message":"New course created with id: 5c6e5a6da8e4bf3914507337","timestamp":"2019-02-21T07:59:41.567Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T08:00:57.073Z"}
+{"level":"info","message":"New course created with id: 5c6e5ac7f9a86548784fec68","timestamp":"2019-02-21T08:01:11.225Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T08:02:27.480Z"}
+{"level":"info","message":"New course created with id: 5c6e5b16583b4a4610d0ae13","timestamp":"2019-02-21T08:02:30.674Z"}
