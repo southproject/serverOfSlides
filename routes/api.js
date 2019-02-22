@@ -78,7 +78,18 @@ mysqlConnection
 redisConnection.on("error",function(err){
     console.log("Error: "+err);
 });
-redisConnection.set("string key","string val", redis.print);
+//redisConnection.set("string key","string val", redis.print);
+redisConnection.flushall(function (err, reply) {
+    if(reply!=null){
+        console.log("flushall: ",reply);
+    }else{
+        console.log("flushall: ",err);
+    }
+});
+redisConnection.set("key", 2422350, redis.print);
+
+
+
 
 //logs for mongooseConnection
 mongoConnection.on('error',function(err){
@@ -108,6 +119,10 @@ router.get('/getPersonalInfo',passport.authenticate('bearer',{session:false}),Us
 router.put('/updatePersonalInfo',passport.authenticate('bearer',{session:false}),User_tableC.updatePersonalInfo);
 router.post('/joinProjectRelationShip',passport.authenticate('bearer',{session:false}),User_project_relC.joinProjectRelationShip);
 
+
+//Tools for generate TinyCode
+router.get('/generateTinyCode',User_project_relC.generateTinyCode);
+router.get('/getReflectProject_id',User_project_relC.getReflectProject_id);
 
 //MongoDB controller Function
 router.post('/createCourse',CourseC.createCourse);

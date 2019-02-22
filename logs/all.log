@@ -373,3 +373,43 @@
 {"level":"info","message":"Course with courseId: 5c6e626f6a184d267479f1eb researched","timestamp":"2019-02-21T08:37:51.606Z"}
 {"level":"info","message":"Course with id: 5c6e626f6a184d267479f1eb updated","timestamp":"2019-02-21T08:38:58.371Z"}
 >>>>>>> cb7d72abafe356c5b6b58daa11d5712dcec38931
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T09:29:58.085Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T10:05:27.835Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T10:10:19.346Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T10:13:36.638Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T10:16:49.408Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T10:19:55.006Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T11:10:25.140Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T11:11:44.791Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T11:13:47.737Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T11:30:06.244Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T11:37:58.704Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T11:59:08.191Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T12:04:41.392Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T12:16:22.385Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T12:19:50.046Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T12:21:46.675Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T12:25:36.609Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T12:26:15.989Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T12:28:02.051Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T12:29:53.386Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T12:31:28.771Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T12:33:41.858Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T12:40:34.637Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T12:41:26.254Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T13:28:00.823Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T13:28:33.655Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T13:46:41.503Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T13:47:49.782Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T13:49:15.555Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T13:49:54.902Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T13:52:00.407Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T13:54:54.639Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T14:11:17.047Z"}
+{"level":"error","message":"Connection error:  failed to connect to server [127.0.0.1:27017] on first connect [MongoNetworkError: connect ECONNREFUSED 127.0.0.1:27017]","timestamp":"2019-02-22T01:42:22.047Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-22T01:43:24.514Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-22T01:45:01.221Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-22T01:45:36.057Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-22T01:56:52.562Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-22T01:58:06.786Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-22T02:03:23.730Z"}
