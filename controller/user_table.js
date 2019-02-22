@@ -277,10 +277,10 @@ function queryUserinfo(req, res) {
                 email: result.dataValues.email,
                 phone_num: result.dataValues.phone_num,
                 //works
-                works: '139',
-                visit: '5w+',
-                mark: '120',
-                download: '160'
+                works: "4300",
+                visit: "10000",
+                mark: "28000",
+                download:"300",
             }
             let rs0 = {
                 errorCode: 0,

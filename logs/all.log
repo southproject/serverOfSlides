@@ -373,6 +373,7 @@
 {"level":"info","message":"Course with courseId: 5c6e626f6a184d267479f1eb researched","timestamp":"2019-02-21T08:37:51.606Z"}
 {"level":"info","message":"Course with id: 5c6e626f6a184d267479f1eb updated","timestamp":"2019-02-21T08:38:58.371Z"}
 >>>>>>> cb7d72abafe356c5b6b58daa11d5712dcec38931
+<<<<<<< HEAD
 {"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T09:29:58.085Z"}
 {"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T10:05:27.835Z"}
 {"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T10:10:19.346Z"}
@@ -413,3 +414,7 @@
 {"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-22T01:56:52.562Z"}
 {"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-22T01:58:06.786Z"}
 {"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-22T02:03:23.730Z"}
+=======
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T10:26:31.363Z"}
+{"level":"info","message":"Course with courseId: 5c6e69c58cf3e21124ba61d6 download","timestamp":"2019-02-21T10:26:44.887Z"}
+>>>>>>> 86bbeabff398496ca3a44c1a6309cb478f4d0f61
