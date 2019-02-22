@@ -418,3 +418,5 @@
 {"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-21T10:26:31.363Z"}
 {"level":"info","message":"Course with courseId: 5c6e69c58cf3e21124ba61d6 download","timestamp":"2019-02-21T10:26:44.887Z"}
 >>>>>>> 86bbeabff398496ca3a44c1a6309cb478f4d0f61
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-22T02:47:17.220Z"}
+{"level":"info","message":"New course created with id: 5c6f64196aa09d2d182e2664","timestamp":"2019-02-22T02:53:13.669Z"}
