@@ -468,3 +468,41 @@
 {"level":"info","message":"All courses of userid = 1 has researched","timestamp":"2019-02-23T09:26:13.277Z"}
 {"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-23T09:28:07.853Z"}
 {"level":"info","message":"Course with courseId: 5c6f67e482fe1b11f077042f researched","timestamp":"2019-02-23T09:28:12.331Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-23T09:35:33.497Z"}
+{"level":"info","message":"Course with courseId: 5c6f67e482fe1b11f077042f download","timestamp":"2019-02-23T09:37:03.865Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-23T09:41:14.617Z"}
+{"level":"info","message":"Course with courseId: 5c6f67e482fe1b11f077042f download","timestamp":"2019-02-23T09:41:18.831Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-23T09:42:04.548Z"}
+{"level":"info","message":"Course with courseId: 5c6f67e482fe1b11f077042f download","timestamp":"2019-02-23T09:42:08.118Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-23T10:10:41.680Z"}
+{"level":"info","message":"Course with courseId: 5c6f67e482fe1b11f077042f download","timestamp":"2019-02-23T10:10:45.649Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-23T10:22:23.647Z"}
+{"level":"info","message":"Course with courseId: 5c6f67e482fe1b11f077042f download","timestamp":"2019-02-23T10:22:26.576Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-23T10:23:09.603Z"}
+{"level":"info","message":"Course with courseId: 5c6f67e482fe1b11f077042f download","timestamp":"2019-02-23T10:23:14.197Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-23T10:37:07.120Z"}
+{"level":"info","message":"Course with courseId: 5c6f67e482fe1b11f077042f download","timestamp":"2019-02-23T10:37:11.402Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-23T10:38:34.079Z"}
+{"level":"info","message":"Course with courseId: 5c6f67e482fe1b11f077042f download","timestamp":"2019-02-23T10:38:36.261Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-23T10:40:25.606Z"}
+{"level":"info","message":"Course with courseId: 5c6f67e482fe1b11f077042f download","timestamp":"2019-02-23T10:40:29.984Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-23T10:40:55.688Z"}
+{"level":"info","message":"Course with courseId: 5c6f67e482fe1b11f077042f download","timestamp":"2019-02-23T10:40:59.087Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-23T10:41:52.726Z"}
+{"level":"info","message":"Course with courseId: 5c6f67e482fe1b11f077042f download","timestamp":"2019-02-23T10:41:55.492Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-23T10:53:20.953Z"}
+{"level":"info","message":"Course with courseId: 5c6f67e482fe1b11f077042f download","timestamp":"2019-02-23T10:53:24.285Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-23T10:55:14.632Z"}
+{"level":"info","message":"Course with courseId: 5c6f67e482fe1b11f077042f download","timestamp":"2019-02-23T10:55:18.492Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-23T10:55:40.618Z"}
+{"level":"info","message":"Course with courseId: 5c6f67e482fe1b11f077042f download","timestamp":"2019-02-23T10:55:42.969Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-23T10:56:44.501Z"}
+{"level":"info","message":"Course with courseId: 5c6f67e482fe1b11f077042f download","timestamp":"2019-02-23T10:56:46.641Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-23T10:57:27.773Z"}
+{"level":"info","message":"Course with courseId: 5c6f67e482fe1b11f077042f download","timestamp":"2019-02-23T10:57:30.358Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-23T10:58:17.860Z"}
+{"level":"info","message":"Course with courseId: 5c6f67e482fe1b11f077042f download","timestamp":"2019-02-23T10:58:21.022Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-23T11:01:24.393Z"}
+{"level":"info","message":"Course with courseId: 5c6f67e482fe1b11f077042f download","timestamp":"2019-02-23T11:01:27.151Z"}
+{"level":"info","message":"Course with courseId: 5c6f67e482fe1b11f077042f download","timestamp":"2019-02-23T11:01:42.924Z"}
+{"level":"info","message":"Course with courseId: 5c6f67e482fe1b11f077042f download","timestamp":"2019-02-23T11:02:08.518Z"}
