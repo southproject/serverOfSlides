@@ -149,12 +149,59 @@ function updateCourse(req,res){
           })
 }
 
-//research course by _id
-function researchCourse(req,res){
+//research course by _id,即CourseId
+function researchByCourseId(req,res){
     CourseM.find({_id:req.body._id},(err,result) => {
         if(!err){
             log.info('Course with courseId: %s researched', req.body._id);
             // console.log("research result==",result);
+            return res.json({
+                errorCode: 0,
+                msg: result
+            });
+        }else{
+            res.statusCode = 500;
+            log.error('Internal error(%d): %s', res.statusCode, err.message);
+            return res.json({
+                errorCode: 1,
+                error: 'Server error'
+            });
+        }
+    })
+}
+
+//research course by user_id
+function researchByUserId(req,res){
+    User_project_rel.find({  
+        where:{
+            user_id:req.body.user_id
+        }
+    }).then(result =>{
+         CourseM.find({_id:result.project_id},(err,result) => {
+            if(!err){
+                log.info('All courses of userid = %s has researched', req.body.user_id);
+                return res.json({
+                    errorCode: 0,
+                    msg: result
+                });
+            }else{
+                res.statusCode = 500;
+                log.error('Internal error(%d): %s', res.statusCode, err.message);
+                return res.json({
+                    errorCode: 1,
+                    error: 'Server error'
+                });
+            }
+        })
+    })
+}
+
+//research course by courseName
+function researchByCourseName(req,res){
+    CourseM.find({courseName:req.body.courseName},(err,result) => {
+        if(!err){
+            log.info('Course with courseName: %s researched', req.body.courseName);
+            console.log("research result==",result);
             return res.json({
                 errorCode: 0,
                 msg: result
@@ -261,7 +308,7 @@ function downloadCourse(req, res){
                 }
             }).then(function (content) {
                 let zip = result[0].courseName+'.zip';
-                // 写入磁盘
+                // 写入磁盘`${__dirname}/output.pdf`
                 fs.writeFile('D:/Graduate/jszip/' + zip , content, function (err) {
                     if (!err) {
                         // 写入磁盘成功
@@ -290,6 +337,8 @@ module.exports={
     createCourse:createCourse,
     deleteCourse:deleteCourse,
     updateCourse:updateCourse,
-    researchCourse:researchCourse,
+    researchByCourseId:researchByCourseId,
+    researchByCourseName:researchByCourseName,
+    researchByUserId:researchByUserId,
     downloadCourse:downloadCourse
 }
