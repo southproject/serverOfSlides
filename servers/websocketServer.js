@@ -5,10 +5,6 @@ var path = require('path');
 var server = require('http').createServer(app);
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
-var io = require('socket.io')(server,{
-    path:'/5c6f6e65e00c7f1b4885c798'
-});
-// var io = require('socket.io')(server);
 var port = process.env.PORT || 3001;
 
 //Routing
@@ -27,10 +23,19 @@ app.all('*', function(req, res, next) {
     next();
   });
 
-//SyncData
+
+function syncData(project_id){
+//SyncData function
+console.log("come in io");
+var namespace = '/'+project_id;
+var io = require('socket.io')(server,{
+    path:namespace
+});
+
 var numOfUers = 0;
 //var project_id = '/5c6f6e65e00c7f1b4885c798';
 //var nsp = io.of(project_id);
+
 io.on('connection',(socket)=>{
     
     var addedUser = false;
@@ -102,6 +107,21 @@ io.on('connection',(socket)=>{
 
 });
 
+}
+
+function createWebSocketServer(req,res){
+    const project_id = req.body.project_id;
+    console.log("project_id: ",project_id)/;
+    syncData(project_id);
+    res.send("create success!");
+}
+
+
+
 server.listen(port, ()=>{
     console.log('SyncServer listening at port %d',port);
 });
+
+module.exports = {
+    createWebSocketServer:createWebSocketServer
+}

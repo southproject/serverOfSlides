@@ -8,8 +8,6 @@ const mysqlConnection = require('../database/mysql-connection');
 const redisConnection = require('../database/redis-connection');
 const mongoConnection = require('../database/mongo-connection');
 
-
-
 var passport = require('passport');
 var BearerStrategy = require('passport-http-bearer').Strategy;
 //system config params
@@ -19,6 +17,8 @@ var config = require('../config');
 const User_tableC = require('../controller/user_table');
 const User_project_relC = require('../controller/user_project_rel');
 const Access_tokenC = require('../controller/access_token');
+
+const WebSocketServer = require('../servers/websocketServer');
 
 //---MongoDB: Controllers function----model
 const CourseC = require('../controllers/course');
@@ -132,5 +132,8 @@ router.get('/researchByCourseId',CourseC.researchByCourseId);
 router.get('/researchByCourseName',CourseC.researchByCourseName);
 router.get('/researchByUserId',CourseC.researchByUserId);
 router.get('/downloadCourse',CourseC.downloadCourse);
+
+//createWebSocketServer
+router.post('/createWebSocketServer',WebSocketServer.createWebSocketServer);
 
 module.exports = router;
