@@ -517,3 +517,10 @@
 {"level":"info","message":"Course with courseId: 5c6f67e482fe1b11f077042f download","timestamp":"2019-02-23T11:01:42.924Z"}
 {"level":"info","message":"Course with courseId: 5c6f67e482fe1b11f077042f download","timestamp":"2019-02-23T11:02:08.518Z"}
 >>>>>>> 05e67fb044b0ab2a991664a356bf20c428bd356a
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-24T08:49:31.796Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-24T08:56:02.687Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-24T08:56:51.103Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-24T09:01:16.554Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-24T09:07:02.359Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-24T09:12:12.027Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-24T09:13:22.902Z"}

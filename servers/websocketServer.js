@@ -5,11 +5,13 @@ var path = require('path');
 var server = require('http').createServer(app);
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
-var io = require('socket.io')(server);
+var io = require('socket.io')(server,{
+    path:'/5c6f6e65e00c7f1b4885c798'
+});
+// var io = require('socket.io')(server);
 var port = process.env.PORT || 3001;
 
 //Routing
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -27,6 +29,8 @@ app.all('*', function(req, res, next) {
 
 //SyncData
 var numOfUers = 0;
+//var project_id = '/5c6f6e65e00c7f1b4885c798';
+//var nsp = io.of(project_id);
 io.on('connection',(socket)=>{
     
     var addedUser = false;
