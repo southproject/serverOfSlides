@@ -24,96 +24,100 @@ app.all('*', function(req, res, next) {
   });
 
 
-function syncData(project_id){
-//SyncData function
-console.log("come in io");
-var namespace = '/'+project_id;
-var io = require('socket.io')(server,{
-    path:namespace
-});
-
-var numOfUers = 0;
-//var project_id = '/5c6f6e65e00c7f1b4885c798';
-//var nsp = io.of(project_id);
-
-io.on('connection',(socket)=>{
-    
-    var addedUser = false;
-    
-    /**add user**/
-    //when the client emits 'add user',this listens and executes
-    socket.on('add user',(username)=>{
-        //?
-        if(addedUser) return;
-        console.log('%s come in WebSocket!',username);
-        //we store the username in the socket session for this client
-        socket.username = username;
-        ++numOfUers;
-        addedUser = true;
-        socket.emit('login',{
-            numOfUers:numOfUers
-        });
-
-        //broadcast all clients that a person has connected
-        socket.broadcast.emit('user joined',{
-            username:socket.username,
-            numOfUers:numOfUers
-        });
+function syncData(project_id) {
+    //SyncData function
+    console.log("come in io");
+    var namespace = '/' + project_id;
+    var io = require('socket.io')(server, {
+        path: namespace
     });
 
+    var numOfUers = 0;
+    //var project_id = '/5c6f6e65e00c7f1b4885c798';
+    //var nsp = io.of(project_id);
 
-    /**editting**/
-    //when the client emits 'editting',server broadcast it to others
-    socket.on('editting',()=>{
-        socket.broadcast.emit('editting',{
-            username:socket.username
+    io.on('connection', (socket) => {
+
+        var addedUser = false;
+
+        /**add user**/
+        //when the client emits 'add user',this listens and executes
+        socket.on('add user', (username) => {
+            //?
+            if (addedUser) return;
+            console.log('%s come in WebSocket!', username);
+            //we store the username in the socket session for this client
+            socket.username = username;
+            ++numOfUers;
+            addedUser = true;
+            socket.emit('login', {
+                numOfUers: numOfUers
+            });
+
+            //broadcast all clients that a person has connected
+            socket.broadcast.emit('user joined', {
+                username: socket.username,
+                numOfUers: numOfUers
+            });
         });
-    });
 
-    /**stop editting**/
-    //when the client emits 'stop editting', server broadcast it to others
-    socket.on('stop editting',()=>{
-        socket.broadcast.emit('stop editting',{
-            username:socket.username
+
+        /**editting**/
+        //when the client emits 'editting',server broadcast it to others
+        socket.on('editting', () => {
+            socket.broadcast.emit('editting', {
+                username: socket.username
+            });
         });
-    });
 
-    /**update data**/
-    //when the client emits 'update data',this listen and executes
-    socket.on('update data',(data)=>{
-        //server will broadcast to all client to execute 'update data'
-        socket.broadcast.emit('update data',data)
-        /*
-        socket.broadcast.emit('update data',{
-            username: socket.username,
-            message:data
+        /**stop editting**/
+        //when the client emits 'stop editting', server broadcast it to others
+        socket.on('stop editting', () => {
+            socket.broadcast.emit('stop editting', {
+                username: socket.username
+            });
         });
-        */
-    });
 
-    /**disconnection**/
-    //when the user disconnection,server broadcast to all the clients
-    socket.on('disconnection',()=>{
-        if(addedUser){
-            --numOfUers;
-
-        //broadcast to all the client
-        socket.broadcast.emit('user left',{
-            username:socket.username,
-            numOfUers:numOfUers
+        /**update data**/
+        //when the client emits 'update data',this listen and executes
+        socket.on('update data', (data) => {
+            //server will broadcast to all client to execute 'update data'
+            socket.broadcast.emit('update data', data)
+            /*
+            socket.broadcast.emit('update data',{
+                username: socket.username,
+                message:data
+            });
+            */
         });
-        }
-    });
 
-});
+        /**disconnection**/
+        //when the user disconnection,server broadcast to all the clients
+        socket.on('disconnection', () => {
+            if (addedUser) {
+                --numOfUers;
+
+                //broadcast to all the client
+                socket.broadcast.emit('user left', {
+                    username: socket.username,
+                    numOfUers: numOfUers
+                });
+            }
+        });
+
+    });
 
 }
 
-function createWebSocketServer(req,res){
+function createWebSocketServer(req, res) {
     const project_id = req.body.project_id;
-    console.log("project_id: ",project_id)/;
+    console.log("create new namespace: ", project_id);
     syncData(project_id);
-    res.send("create success!");
+    let rs = {
+        errorCode:0,
+        msg:'create success!'
+    }
+    res.send(rs);
 }
 
 
