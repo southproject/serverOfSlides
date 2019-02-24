@@ -2,9 +2,8 @@ var test = require('tape');
 var request = require('superagent');
 var baseUrl = 'http://localhost:3000/api';
 
-
+//"_id":"5c6e1b1c1806d72b74d250e9",
 var courseData = {
-	"_id":"5c6e1b1c1806d72b74d250e9",
 	"user_id":2,
 	"courseName": "一年级数学111",
 	"grade": "一年级",
@@ -50,15 +49,15 @@ var courseData = {
 }
 
 
-// test('Create new course', function (t) {
-//     request
-//         .post(baseUrl + '/createCourse')
-//         .send(courseData1)
-//         .end(function (err, res) {
-//             console.log("create course success!!!");
-//             t.end();
-//         });
-// });
+test('Create new course', function (t) {
+    request
+        .post(baseUrl + '/createCourse')
+        .send(courseData)
+        .end(function (err, res) {
+            console.log("create course success!!!");
+            t.end();
+        });
+});
 
 // test('Delete course', function (t) {
 //     request
@@ -70,12 +69,22 @@ var courseData = {
 //         });
 // });
 
-// test('Research course', function (t) {
+// test('Research course by _id', function (t) {
 //     request
-//         .get(baseUrl + '/researchCourse')
+//         .get(baseUrl + '/researchByCourseId')
 //         .send({"_id":"5c6e626f6a184d267479f1eb"})
 //         .end(function (err, res) {
 //             console.log("research course success!!!");
+//             t.end();
+//         });
+// });
+
+// test('Research course by courseName', function (t) {
+//     request
+//         .get(baseUrl + '/researchByCourseName')
+//         .send({"courseName":"小数乘法"})
+//         .end(function (err, res) {
+//             console.log("research course by courseName success!!!");
 //             t.end();
 //         });
 // });
@@ -90,12 +99,12 @@ var courseData = {
 //         });
 // });
 
-test('Download course', function (t) {
-    request
-        .get(baseUrl + '/downloadCourse')
-        .send({"_id":"5c6e69c58cf3e21124ba61d6"})
-        .end(function (err, res) {
-            console.log("download course success!!!");
-            t.end();
-        });
-});
+// test('Download course', function (t) {
+//     request
+//         .get(baseUrl + '/downloadCourse')
+//         .send({"_id":"5c6f67e482fe1b11f077042f"})
+//         .end(function (err, res) {
+//             console.log("download course success!!!");
+//             t.end();
+//         });
+// });

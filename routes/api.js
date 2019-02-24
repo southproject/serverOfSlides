@@ -128,7 +128,9 @@ router.get('/getReflectProject_id',User_project_relC.getReflectProject_id);
 router.post('/createCourse',CourseC.createCourse);
 router.delete('/deleteCourse',CourseC.deleteCourse);
 router.put('/updateCourse',CourseC.updateCourse);
-router.get('/researchCourse',CourseC.researchCourse);
+router.get('/researchByCourseId',CourseC.researchByCourseId);
+router.get('/researchByCourseName',CourseC.researchByCourseName);
+router.get('/researchByUserId',CourseC.researchByUserId);
 router.get('/downloadCourse',CourseC.downloadCourse);
 
 module.exports = router;
