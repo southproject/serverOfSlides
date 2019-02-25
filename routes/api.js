@@ -138,6 +138,7 @@ router.get('/researchByCourseId',passport.authenticate('bearer',{session:false})
 router.get('/researchByCourseName',passport.authenticate('bearer',{session:false}),CourseC.researchByCourseName);
 router.get('/researchByUserId',passport.authenticate('bearer',{session:false}),CourseC.researchByUserId);
 router.get('/downloadCourse',passport.authenticate('bearer',{session:false}),CourseC.downloadCourse);
+router.get('/allCourses',passport.authenticate('bearer',{session:false}),CourseC.allCourses);
 
 //createWebSocketServer
 router.post('/createWebSocketServer',passport.authenticate('bearer',{session:false}),WebSocketServer.createWebSocketServer);

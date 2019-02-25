@@ -40,3 +40,6 @@
 {"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-25T12:17:27.317Z"}
 {"level":"info","message":"Course with courseId: undefined download","timestamp":"2019-02-25T12:17:30.640Z"}
 >>>>>>> 9f3831d8474c42aaf6e38539afd4e99216c42d8e
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-25T13:10:27.850Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-25T13:12:28.554Z"}
+{"level":"info","message":"All courses have been found!","timestamp":"2019-02-25T13:13:41.356Z"}

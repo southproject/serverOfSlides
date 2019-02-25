@@ -223,6 +223,28 @@ function researchByCourseName(req,res){
     })
 }
 
+//首次进入课件广场，呈现所有课件信息
+function allCourses(req,res){
+    CourseM.find({},(err,result) => {
+        if(!err){
+            log.info('All courses have been found!');
+            // console.log("result:===",result)
+            return res.json({
+                errorCode: 0,
+                msg: result
+            });
+        }else{
+            res.statusCode = 500;
+            log.error('Internal error(%d): %s', res.statusCode, err.message);
+            return res.json({
+                errorCode: 1,
+                error: 'Server error'
+            });
+        }
+    })
+}
+
+
 //delete course by _id
   function deleteCourse(req,res){
     CourseM.deleteMany({_id:req.body._id},(err,result)=>{
@@ -347,5 +369,6 @@ module.exports={
     researchByCourseId:researchByCourseId,
     researchByCourseName:researchByCourseName,
     researchByUserId:researchByUserId,
-    downloadCourse:downloadCourse
+    downloadCourse:downloadCourse,
+    allCourses:allCourses
 }
