@@ -31,7 +31,6 @@ function syncData(project_id) {
     var io = require('socket.io')(server, {
         path: namespace
     });
-
     var numOfUers = 0;
     //var project_id = '/5c6f6e65e00c7f1b4885c798';
     //var nsp = io.of(project_id);
@@ -39,6 +38,8 @@ function syncData(project_id) {
     io.on('connection', (socket) => {
 
         var addedUser = false;
+        //console.log("socket: ",socket);
+        //console.log("socket.conn.server.clients:",socket.conn.server.clients);
 
         /**add user**/
         //when the client emits 'add user',this listens and executes
@@ -106,7 +107,6 @@ function syncData(project_id) {
         });
 
     });
-
 }
 
 function createWebSocketServer(req, res) {
@@ -120,6 +120,15 @@ function createWebSocketServer(req, res) {
     res.send(rs);
 }
 
+//Depreciation
+function getUserinNSP(req,res){
+    const project_id = req.query.project_id;
+    var namespace = '/' + project_id;
+    var io = require('socket.io')(server, {
+        path: namespace
+    });
+}
+
 
 
 server.listen(port, ()=>{
@@ -127,5 +136,6 @@ server.listen(port, ()=>{
 });
 
 module.exports = {
-    createWebSocketServer:createWebSocketServer
+    createWebSocketServer:createWebSocketServer,
+    //getUserinNSP:getUserinNSP
 }

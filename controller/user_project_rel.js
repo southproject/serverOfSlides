@@ -133,9 +133,30 @@ function convertTen(str) {
     return resultValue;
 }
 
+function getProjectUsersList(req,res){
+
+    const project_id = req.query.project_id;
+
+    User_project_rel.findAll({
+        attributes:['user_id'],
+        where:{
+            project_id:project_id,
+            //hoster：can be involve in chat must be not hoster
+            hoster:0
+        },
+        order:[[ 'user_id','ASC']]
+    }).then(result=>{
+        if(result.length == 0){
+            res.json({errorCode:1,msg:'no other user in!'})
+        }else{
+            res.json({errorCode:0,msg:result});
+        }
+    })
+}
 
 module.exports = {
     joinProjectRelationShip: joinProjectRelationShip,
     generateTinyCode: generateTinyCode,
-    getReflectProject_id:getReflectProject_id
+    getReflectProject_id:getReflectProject_id,
+    getProjectUsersList:getProjectUsersList
 }

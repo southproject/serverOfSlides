@@ -106,34 +106,41 @@ router.get('/', passport.authenticate('bearer',{session:false}), function(req,re
     });
 });
 
-
+/**
+ * API for test
+ *  */
 router.get('/queryUsers', passport.authenticate('bearer',{session:false}), User_tableC.queryUsers);
 router.post('/addUsers',passport.authenticate('bearer',{session:false}),User_tableC.addUsers);
 router.get('/queryResultTest',User_tableC.queryResultTest);
 router.delete('/destoryFormatTest',User_tableC.destoryFormatTest);
 router.get('/saveUserModel',User_tableC.saveUserModel);
+
+/**
+ * API for Slides
+ */
 router.post('/register',User_tableC.register);
 router.get('/queryUserinfo',passport.authenticate('bearer',{session:false}),User_tableC.queryUserinfo);
 router.put('/updateInfo',passport.authenticate('bearer',{session:false}),User_tableC.updateInfo);
 router.get('/getPersonalInfo',passport.authenticate('bearer',{session:false}),User_tableC.getPersonalInfo);
 router.put('/updatePersonalInfo',passport.authenticate('bearer',{session:false}),User_tableC.updatePersonalInfo);
 router.post('/joinProjectRelationShip',passport.authenticate('bearer',{session:false}),User_project_relC.joinProjectRelationShip);
-
+router.get('/getProjectUsersList',passport.authenticate('bearer',{session:false}),User_project_relC.getProjectUsersList);
 
 //Tools for generate TinyCode
-router.get('/generateTinyCode',User_project_relC.generateTinyCode);
-router.get('/getReflectProject_id',User_project_relC.getReflectProject_id);
+router.get('/generateTinyCode',passport.authenticate('bearer',{session:false}),User_project_relC.generateTinyCode);
+router.get('/getReflectProject_id',passport.authenticate('bearer',{session:false}),User_project_relC.getReflectProject_id);
 
 //MongoDB controller Function
-router.post('/createCourse',CourseC.createCourse);
-router.delete('/deleteCourse',CourseC.deleteCourse);
-router.put('/updateCourse',CourseC.updateCourse);
-router.get('/researchByCourseId',CourseC.researchByCourseId);
-router.get('/researchByCourseName',CourseC.researchByCourseName);
-router.get('/researchByUserId',CourseC.researchByUserId);
-router.get('/downloadCourse',CourseC.downloadCourse);
+router.post('/createCourse',passport.authenticate('bearer',{session:false}),CourseC.createCourse);
+router.delete('/deleteCourse',passport.authenticate('bearer',{session:false}),CourseC.deleteCourse);
+router.put('/updateCourse',passport.authenticate('bearer',{session:false}),CourseC.updateCourse);
+router.get('/researchByCourseId',passport.authenticate('bearer',{session:false}),CourseC.researchByCourseId);
+router.get('/researchByCourseName',passport.authenticate('bearer',{session:false}),CourseC.researchByCourseName);
+router.get('/researchByUserId',passport.authenticate('bearer',{session:false}),CourseC.researchByUserId);
+router.get('/downloadCourse',passport.authenticate('bearer',{session:false}),CourseC.downloadCourse);
 
 //createWebSocketServer
-router.post('/createWebSocketServer',WebSocketServer.createWebSocketServer);
+router.post('/createWebSocketServer',passport.authenticate('bearer',{session:false}),WebSocketServer.createWebSocketServer);
+//router.get('/getUserinNSP',WebSocketServer.getUserinNSP);
 
 module.exports = router;
