@@ -17,9 +17,12 @@ var mongoose_conf = {
     uri:"mongodb://192.168.71.22/apiDB"
 }
 
+var webSocketPort = 3001;
+
 module.exports = {
     mysql_conf,
     tokenLifeTime,
     redis_conf,
-    mongoose_conf
+    mongoose_conf,
+    webSocketPort
 };

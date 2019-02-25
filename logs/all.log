@@ -54,3 +54,6 @@
 {"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-25T13:12:28.554Z"}
 {"level":"info","message":"All courses have been found!","timestamp":"2019-02-25T13:13:41.356Z"}
 >>>>>>> 491e7217e0026bcf7f0c9e423b4d5b8084b395f4
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-25T13:59:02.376Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-25T14:10:38.040Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-25T14:11:52.700Z"}

@@ -1,6 +1,7 @@
 // Setup basic express server
 var express = require('express');
 var app = express();
+var config = require('../config')
 //var path = require('path');
 var redis = require('redis');
 var redisClient = redis.createClient;
@@ -8,10 +9,10 @@ var redisClient = redis.createClient;
 var server = require('http').createServer(app);
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
-var port = process.env.PORT || 3001;
+var port = config.webSocketPort;
 
-var pub = redisClient(6379, '192.168.71.22');
-var sub = redisClient(6379, '192.168.71.22');
+var pub = redisClient(config.redis_conf.port,config.redis_conf.host);
+var sub = redisClient(config.redis_conf.port,config.redis_conf.host);
 
 //Routing
 app.use(bodyParser.json());
