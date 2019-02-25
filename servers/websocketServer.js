@@ -13,8 +13,6 @@ var port = process.env.PORT || 3001;
 var pub = redisClient(6379, '192.168.71.22');
 var sub = redisClient(6379, '192.168.71.22');
 
-
-
 //Routing
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

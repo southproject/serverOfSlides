@@ -116,20 +116,6 @@ function register(req,res){
 }
 
 
-
-
-
-
-
-
-
-//Login
-function userLogin(req,res){
-
-    
-}
-
-
 //QueryUsers
 function queryUsers(req,res){
 
