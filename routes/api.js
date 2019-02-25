@@ -142,5 +142,6 @@ router.get('/downloadCourse',passport.authenticate('bearer',{session:false}),Cou
 //createWebSocketServer
 router.post('/createWebSocketServer',passport.authenticate('bearer',{session:false}),WebSocketServer.createWebSocketServer);
 //router.get('/getUserinNSP',WebSocketServer.getUserinNSP);
+router.post('/createChatChannel',passport.authenticate('bearer',{session:false}),WebSocketServer.createChatChannel);
 
 module.exports = router;

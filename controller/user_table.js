@@ -99,10 +99,8 @@ function register(req,res){
                             msg:"role relation create failed!"
                         }
                         res.send(rs2);
-                    }
-                    
+                    }   
                 })
-
             })
         })
         }else{

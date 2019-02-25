@@ -1,11 +1,19 @@
 // Setup basic express server
 var express = require('express');
 var app = express();
-var path = require('path');
+//var path = require('path');
+var redis = require('redis');
+var redisClient = redis.createClient;
+
 var server = require('http').createServer(app);
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var port = process.env.PORT || 3001;
+
+var pub = redisClient(6379, '192.168.71.22');
+var sub = redisClient(6379, '192.168.71.22');
+
+
 
 //Routing
 app.use(bodyParser.json());
@@ -13,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 //app.use(express.static(path.join(__dirname,'public')));
 //cors domain setting
-app.all('*', function(req, res, next) {
+app.all('*', function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     res.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
@@ -21,7 +29,7 @@ app.all('*', function(req, res, next) {
     res.header("X-Powered-By", '3.2.1');
     res.header("Content-Type", "application/json;charset=utf-8");
     next();
-  });
+});
 
 
 function syncData(project_id) {
@@ -36,8 +44,8 @@ function syncData(project_id) {
     io.on('connection', (socket) => {
 
         var addedUser = false;
-        console.log("socket: ",socket);
-        console.log("roomid: ",socket.handshake.query.roomid);
+        console.log("socket: ", socket);
+        console.log("roomid: ", socket.handshake.query.roomid);
 
         //var roomid = socket.handshake.query.roomid;
 
@@ -114,14 +122,14 @@ function createWebSocketServer(req, res) {
     console.log("create new namespace: ", project_id);
     syncData(project_id);
     let rs = {
-        errorCode:0,
-        msg:'create success!'
+        errorCode: 0,
+        msg: 'create success!'
     }
     res.send(rs);
 }
 
 //Depreciation
-function getUserinNSP(req,res){
+function getUserinNSP(req, res) {
     const project_id = req.query.project_id;
     var namespace = '/' + project_id;
     var io = require('socket.io')(server, {
@@ -129,13 +137,101 @@ function getUserinNSP(req,res){
     });
 }
 
+//Redis Sub/Pub for chat
+/**
+ * 1.function createChatChannel(req,res){}
+ * 2.function syncChatData(roomid){}
+ *  */
+function createChatChannel(req, res) {
+    const roomid = req.body.project_id;
+    console.log("create new chatroom: ", roomid);
+    syncChatData(roomid);
+    let rs = {
+        errorCode: 0,
+        msg: 'create room success!'
+    }
+    res.send(rs);
+}
 
+function syncChatData(roomid) {
 
-server.listen(port, ()=>{
-    console.log('SyncServer listening at port %d',port);
+    //generate WebSocket Connection
+    console.log("come in chatroom: ", roomid);
+    var roomSet = {};
+
+    var io = require('socket.io')(server);
+
+    var chatUersNum = 0;
+
+    io.on('connection', (socket) => {
+        //join chatRoom
+        socket.on('join chat', (data) => {
+            chatUersNum++;
+            //join room
+            socket.join(roomid);
+
+            if (!roomSet[roomid]) {
+                roomSet[roomid] = {}
+                console.log('sub channel ' + roomid);
+                sub.subscribe(roomid);
+            }
+            roomSet[roomid][socket.id] = {}
+
+            console.log(data.username + 'join IP:' + socket.client.conn.remoteAddress);
+            roomSet[roomid][socket.id].username = data.username;
+
+            pub.publish(roomid, JSON.stringify({
+                'event': 'join',
+                'data': data
+            }));
+
+        })
+
+        //send message
+        socket.on('send mesg', (data) => {
+            console.log('Received Message: ' + data.text);
+            pub.publish(roomid, JSON.stringify({
+                'event': 'broadcast emit',
+                'data': {
+                    username: roomSet[roomid][socket.id].username,
+                    text: data.text
+                }
+            }))
+        })
+
+        //disconnection
+        socket.on('disconnection', () => {
+            chatUersNum--;
+            if (roomSet[roomid] && roomSet[roomid][socket.id] && roomSet[roomid][socket.id].username) {
+                console.log(roomSet[roomid][socket.id].username + 'quit');
+                pub.publish(roomid, JSON.stringify({
+                    'event': 'brocast quit',
+                    'data': {
+                        username: roomSet[roomid][socket.id].username
+                    }
+                }));
+            }
+            roomSet[roomid] && roomSet[roomid][socket.id] && (delete roomSet[roomid][socket.id]);
+        })
+    })
+
+    sub.on('subscribe', (channel, count) => {
+        console.log('subscribe: ' + channel);
+    });
+
+    sub.on('message', (channel, message) => {
+        console.log('message channel' + channel + ':' + message);
+        io.to(channel).emit('message', JSON.parse(message));
+    });
+
+}
+
+server.listen(port, () => {
+    console.log('SyncServer listening at port %d', port);
 });
 
 module.exports = {
-    createWebSocketServer:createWebSocketServer,
+    createWebSocketServer: createWebSocketServer,
     //getUserinNSP:getUserinNSP
+    createChatChannel: createChatChannel
 }
