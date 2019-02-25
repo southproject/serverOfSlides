@@ -16,6 +16,7 @@
 {"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-25T09:28:19.661Z"}
 {"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-25T09:29:31.147Z"}
 {"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-25T09:32:15.295Z"}
+<<<<<<< HEAD
 {"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-25T09:58:36.351Z"}
 {"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-25T11:35:09.724Z"}
 {"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-25T11:38:20.299Z"}
@@ -25,3 +26,17 @@
 {"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-25T12:32:31.124Z"}
 {"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-25T12:45:21.815Z"}
 {"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-25T12:58:27.401Z"}
+=======
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-25T10:34:01.321Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-25T10:35:30.171Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-25T10:39:22.521Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-25T12:02:25.942Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-25T12:04:15.660Z"}
+{"level":"info","message":"All courses of userid = undefined has researched","timestamp":"2019-02-25T12:09:21.829Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-25T12:13:27.815Z"}
+{"level":"info","message":"Course with courseId: undefined researched","timestamp":"2019-02-25T12:13:35.324Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-25T12:15:24.710Z"}
+{"level":"info","message":"Course with courseName: undefined researched","timestamp":"2019-02-25T12:15:28.265Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-25T12:17:27.317Z"}
+{"level":"info","message":"Course with courseId: undefined download","timestamp":"2019-02-25T12:17:30.640Z"}
+>>>>>>> 9f3831d8474c42aaf6e38539afd4e99216c42d8e
