@@ -154,7 +154,8 @@ function updateCourse(req,res){
 
 //research course by _id,即CourseId
 function researchByCourseId(req,res){
-    CourseM.find({_id:req.body._id},(err,result) => {
+    const _id = req.query._id;
+    CourseM.find({_id:_id},(err,result) => {
         if(!err){
             log.info('Course with courseId: %s researched', req.body._id);
             // console.log("research result==",result);
@@ -175,9 +176,10 @@ function researchByCourseId(req,res){
 
 //research course by user_id
 function researchByUserId(req,res){
+    const user_id = req.query.user_id;
     User_project_rel.find({  
         where:{
-            user_id:req.body.user_id
+            user_id: user_id
         }
     }).then(result =>{
          CourseM.find({_id:result.project_id},(err,result) => {
@@ -201,7 +203,8 @@ function researchByUserId(req,res){
 
 //research course by courseName
 function researchByCourseName(req,res){
-    CourseM.find({courseName:req.body.courseName},(err,result) => {
+    const courseName = req.query.courseName;
+    CourseM.find({courseName:courseName},(err,result) => {
         if(!err){
             log.info('Course with courseName: %s researched', req.body.courseName);
             console.log("research result==",result);
@@ -239,7 +242,8 @@ function researchByCourseName(req,res){
 
 //download course
 function downloadCourse(req, res){
-    CourseM.find({_id:req.body._id},(err,result) => {
+    const _id = req.query._id;
+    CourseM.find({_id:_id},(err,result) => {
         if(!err){
             log.info('Course with courseId: %s download', req.body._id);
             var zip = new JSZip();
