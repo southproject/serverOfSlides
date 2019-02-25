@@ -1,10 +1,10 @@
 'use strict';
 (function(){
 
-    var project_id = '/5c6f6e65e00c7f1b4885c798';
-    var url = 'http://localhost:3001';
-    //var para = url+project_id;
-   // console.log()
+    var roomid = '5c6f6e65e00c7f1b4885c798';
+    var project_id = '/'+roomid;
+    var url = 'http://localhost:3001?roomid='+roomid;
+    
     var socket = io(url,{
         path:project_id
     });

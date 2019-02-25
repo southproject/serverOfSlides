@@ -32,14 +32,14 @@ function syncData(project_id) {
         path: namespace
     });
     var numOfUers = 0;
-    //var project_id = '/5c6f6e65e00c7f1b4885c798';
-    //var nsp = io.of(project_id);
 
     io.on('connection', (socket) => {
 
         var addedUser = false;
-        //console.log("socket: ",socket);
-        //console.log("socket.conn.server.clients:",socket.conn.server.clients);
+        console.log("socket: ",socket);
+        console.log("roomid: ",socket.handshake.query.roomid);
+
+        //var roomid = socket.handshake.query.roomid;
 
         /**add user**/
         //when the client emits 'add user',this listens and executes
