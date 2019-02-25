@@ -132,6 +132,7 @@ router.get('/generateTinyCode', passport.authenticate('bearer', { session: false
 router.get('/getReflectProject_id', passport.authenticate('bearer', { session: false }), User_project_relC.getReflectProject_id);
 
 //MongoDB controller Function
+<<<<<<< HEAD
 router.post('/createCourse', passport.authenticate('bearer', { session: false }), CourseC.createCourse);
 router.delete('/deleteCourse', passport.authenticate('bearer', { session: false }), CourseC.deleteCourse);
 router.put('/updateCourse', passport.authenticate('bearer', { session: false }), CourseC.updateCourse);
@@ -139,6 +140,16 @@ router.get('/researchByCourseId', passport.authenticate('bearer', { session: fal
 router.get('/researchByCourseName', passport.authenticate('bearer', { session: false }), CourseC.researchByCourseName);
 router.get('/researchByUserId', passport.authenticate('bearer', { session: false }), CourseC.researchByUserId);
 router.get('/downloadCourse', passport.authenticate('bearer', { session: false }), CourseC.downloadCourse);
+=======
+router.post('/createCourse',passport.authenticate('bearer',{session:false}),CourseC.createCourse);
+router.delete('/deleteCourse',passport.authenticate('bearer',{session:false}),CourseC.deleteCourse);
+router.put('/updateCourse',passport.authenticate('bearer',{session:false}),CourseC.updateCourse);
+router.get('/researchByCourseId',passport.authenticate('bearer',{session:false}),CourseC.researchByCourseId);
+router.get('/researchByCourseName',passport.authenticate('bearer',{session:false}),CourseC.researchByCourseName);
+router.get('/researchByUserId',passport.authenticate('bearer',{session:false}),CourseC.researchByUserId);
+router.get('/downloadCourse',passport.authenticate('bearer',{session:false}),CourseC.downloadCourse);
+router.get('/allCourses',passport.authenticate('bearer',{session:false}),CourseC.allCourses);
+>>>>>>> 491e7217e0026bcf7f0c9e423b4d5b8084b395f4
 
 //createWebSocketServer
 router.post('/createWebSocketServer', passport.authenticate('bearer', { session: false }), WebSocketServer.createWebSocketServer);
