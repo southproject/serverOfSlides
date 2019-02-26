@@ -15,8 +15,10 @@ var builder = new xml2js.Builder();  // JSON->xml
 var Sequelize = require('sequelize');
 var Connection = require('../database/mysql-connection');
 var user_project_rel = require('../models/user_project_rel');
+var user_collection = require('../models/user_collection');
 
 const User_project_rel = user_project_rel(Connection,Sequelize);
+const User_collection = user_collection(Connection,Sequelize);
 
 //Create course
 function createCourse(req, res){
@@ -90,16 +92,8 @@ function createCourse(req, res){
 
 //update course by _id
 function updateCourse(req,res){
-    var body = null
-    for(let key in req.body){
-        body = key
-        break;
-    }
-    console.log(JSON.parse(body))
-    req.body = JSON.parse(body)
     var _id = req.body._id;
-    console.log(req.body.thumbnail.width)
-   // console.log("url----",req.body.thumbnail.url)
+    console.log("_id-----",_id)
     if(!_id){
         res.statusCode = 404;
         log.error('Course with id: %s Not Found', _id);
@@ -117,27 +111,25 @@ function updateCourse(req,res){
                   isOpen:req.body.isOpen,
                   isEdit:req.body.isEdit,
                   catalog:{ 
-                    children:req.body.catalog.children,
-                    name:req.body.catalog.name
+                    children:req.body.children,
+                    name:req.body.name
                  },
                   fileSize:req.body.fileSize,
                   scope:req.body.scope,
                   addTime:req.body.addTime,
                   views:req.body.views,
                   thumbnail:{
-                  //  url:req.body.url,
-                     url:req.body.thumbnail.url,
+                    url:req.body.url,
                     style:{
-                        width:req.body.thumbnail.style.width,
-                        height:req.body.thumbnail.style.height
+                        width:req.body.width,
+                        height:req.body.height
                     }
                   },
                   slides:{
                     templateId:req.body.templateId,
-                    slide:JSON.parse(req.body.slide)
+                    slide:req.body.slide
                   }
               }}
-              console.log(query.$set)
               CourseM.updateOne(condiction, query, (err, result) => {
                 if(!err){
                     log.info('Course with id: %s updated', _id);
@@ -167,8 +159,8 @@ function researchByCourseId(req,res){
     const _id = req.query._id;
     CourseM.find({_id:_id},(err,result) => {
         if(!err){
-            log.info('Course with courseId: %s researched', req.query._id);
-            // console.log("research result==",result);
+            log.info('Course with courseId: %s researched', req.body._id);
+            console.log("research result==",result);
             return res.json({
                 errorCode: 0,
                 msg: result
@@ -372,6 +364,69 @@ function downloadCourse(req, res){
     })
 }
 
+//用户收藏课件
+function collectCourse(req,res){ 
+    CourseM.find({_id:req.body._id},(err,result) => {
+        if(!err){
+            log.info('collect course success!');
+            User_collection.create({
+                user_id:req.body.user_id,
+                course_id:req.body._id
+            })
+            return res.json({
+                errorCode: 0,
+                msg: "collect success!"
+            });
+        }else{
+            res.statusCode = 500;
+            log.error('Internal error(%d): %s', res.statusCode, err.message);
+            return res.json({
+                errorCode: 1,
+                error: 'Server error'
+            });
+        }
+    })
+}
+
+//查看用户收藏课件
+function allCollectCourses(req,res){ 
+    const user_id = req.query.user_id;
+    User_collection.findAll({  
+        where:{
+            user_id: user_id
+        }
+    }).then( async result0=>{
+        var resultArray = [];
+        if(result0.length!=0){
+            for(let i=0;i<result0.length;i++){
+                let item = {
+                    course_id:result0[i].dataValues.course_id
+                };
+                resultArray.push(item);
+                console.log("resultArray:",resultArray[i].course_id) 
+                try {
+                    await CourseM.find(
+                        {_id:resultArray[i].course_id}
+                    ).then(result1 => {
+                        console.log("result1===",result1)
+                        let rs1 = {
+                            errorCode: 0,
+                            msg: result1
+                        }
+                        res.send(rs1);
+                        // return res.json({
+                        //         errorCode: 0,
+                        //         msg: result1
+                        // });
+                    })
+                }catch (err) {
+                        console.log(err);
+                }
+            }
+        }   
+    })
+}
+
 module.exports={
     createCourse:createCourse,
     deleteCourse:deleteCourse,
@@ -380,5 +435,7 @@ module.exports={
     researchByCourseName:researchByCourseName,
     researchByUserId:researchByUserId,
     downloadCourse:downloadCourse,
-    allCourses:allCourses
+    allCourses:allCourses,
+    collectCourse:collectCourse,
+    allCollectCourses:allCollectCourses
 }

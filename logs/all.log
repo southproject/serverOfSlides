@@ -120,3 +120,4 @@
 {"level":"info","message":"New course created with id: 5c750a6a326ab4bb70ccb041","timestamp":"2019-02-26T09:44:10.404Z"}
 {"level":"info","message":"Course with id: 5c750a6a326ab4bb70ccb041 updated","timestamp":"2019-02-26T09:44:19.105Z"}
 {"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-26T09:54:14.362Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-26T13:41:44.994Z"}
