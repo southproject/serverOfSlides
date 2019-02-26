@@ -90,8 +90,16 @@ function createCourse(req, res){
 
 //update course by _id
 function updateCourse(req,res){
+    var body = null
+    for(let key in req.body){
+        body = key
+        break;
+    }
+    console.log(JSON.parse(body))
+    req.body = JSON.parse(body)
     var _id = req.body._id;
-    console.log("_id-----",_id)
+    console.log(req.body.thumbnail.width)
+   // console.log("url----",req.body.thumbnail.url)
     if(!_id){
         res.statusCode = 404;
         log.error('Course with id: %s Not Found', _id);
@@ -109,25 +117,27 @@ function updateCourse(req,res){
                   isOpen:req.body.isOpen,
                   isEdit:req.body.isEdit,
                   catalog:{ 
-                    children:req.body.children,
-                    name:req.body.name
+                    children:req.body.catalog.children,
+                    name:req.body.catalog.name
                  },
                   fileSize:req.body.fileSize,
                   scope:req.body.scope,
                   addTime:req.body.addTime,
                   views:req.body.views,
                   thumbnail:{
-                    url:req.body.url,
+                  //  url:req.body.url,
+                     url:req.body.thumbnail.url,
                     style:{
-                        width:req.body.width,
-                        height:req.body.height
+                        width:req.body.thumbnail.style.width,
+                        height:req.body.thumbnail.style.height
                     }
                   },
                   slides:{
                     templateId:req.body.templateId,
-                    slide:req.body.slide
+                    slide:JSON.parse(req.body.slide)
                   }
               }}
+              console.log(query.$set)
               CourseM.updateOne(condiction, query, (err, result) => {
                 if(!err){
                     log.info('Course with id: %s updated', _id);
