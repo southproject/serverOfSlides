@@ -11,8 +11,8 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var port = config.webSocketPort;
 
-var pub = redisClient(config.redis_conf.port,config.redis_conf.host);
-var sub = redisClient(config.redis_conf.port,config.redis_conf.host);
+var pub = redisClient(config.redis_conf.port, config.redis_conf.host);
+var sub = redisClient(config.redis_conf.port, config.redis_conf.host);
 
 //Routing
 app.use(bodyParser.json());
@@ -167,6 +167,7 @@ function syncChatData(roomid) {
         socket.on('join chat', (data) => {
             chatUersNum++;
             //join room
+            console.log('%d users in chat!');
             socket.join(roomid);
 
             if (!roomSet[roomid]) {
