@@ -57,3 +57,67 @@
 {"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-25T13:59:02.376Z"}
 {"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-25T14:10:38.040Z"}
 {"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-25T14:11:52.700Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-26T08:52:51.450Z"}
+{"level":"info","message":"New course created with id: 5c74fe74439905b780918297","timestamp":"2019-02-26T08:53:08.174Z"}
+{"level":"info","message":"Course with id: 5c74fe74439905b780918297 updated","timestamp":"2019-02-26T08:53:11.185Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-26T08:55:26.616Z"}
+{"level":"info","message":"New course created with id: 5c74ff0c01ba46b7bd07d070","timestamp":"2019-02-26T08:55:40.768Z"}
+{"level":"info","message":"New course created with id: 5c75005501ba46b7bd07d072","timestamp":"2019-02-26T09:01:09.242Z"}
+{"level":"info","message":"New course created with id: 5c75009b01ba46b7bd07d074","timestamp":"2019-02-26T09:02:19.658Z"}
+{"level":"info","message":"New course created with id: 5c7500dc01ba46b7bd07d076","timestamp":"2019-02-26T09:03:24.022Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-26T09:06:14.494Z"}
+{"level":"info","message":"New course created with id: 5c75018b1f44e3b888a668b5","timestamp":"2019-02-26T09:06:19.158Z"}
+{"level":"info","message":"New course created with id: 5c7501b61f44e3b888a668b7","timestamp":"2019-02-26T09:07:02.942Z"}
+{"level":"info","message":"New course created with id: 5c7502891f44e3b888a668b9","timestamp":"2019-02-26T09:10:33.289Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-26T09:11:37.689Z"}
+{"level":"info","message":"New course created with id: 5c7502d39bb09ab8e369b5f8","timestamp":"2019-02-26T09:11:47.139Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-26T09:12:27.097Z"}
+{"level":"info","message":"New course created with id: 5c75030ae204d9b90c99e564","timestamp":"2019-02-26T09:12:42.219Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-26T09:13:27.269Z"}
+{"level":"info","message":"New course created with id: 5c7503472d9f51b91871f9fc","timestamp":"2019-02-26T09:13:43.615Z"}
+{"level":"error","message":"Course with id: undefined Not Found","timestamp":"2019-02-26T09:13:45.867Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-26T09:20:46.901Z"}
+{"level":"info","message":"New course created with id: 5c7504fdd0b080b9905d4fbc","timestamp":"2019-02-26T09:21:01.085Z"}
+{"level":"error","message":"Course with id: undefined Not Found","timestamp":"2019-02-26T09:21:03.243Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-26T09:21:37.132Z"}
+{"level":"info","message":"New course created with id: 5c7505293e5b7ab9a34e4fdc","timestamp":"2019-02-26T09:21:45.174Z"}
+{"level":"error","message":"Course with id: undefined Not Found","timestamp":"2019-02-26T09:21:49.733Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-26T09:23:28.025Z"}
+{"level":"info","message":"New course created with id: 5c75059a53524eb9afb91dea","timestamp":"2019-02-26T09:23:38.881Z"}
+{"level":"error","message":"Course with id: undefined Not Found","timestamp":"2019-02-26T09:23:42.059Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-26T09:24:07.244Z"}
+{"level":"info","message":"New course created with id: 5c7505c07c2315b9e1a2baf9","timestamp":"2019-02-26T09:24:16.277Z"}
+{"level":"error","message":"Course with id: undefined Not Found","timestamp":"2019-02-26T09:24:18.461Z"}
+{"level":"info","message":"New course created with id: 5c7505fe7c2315b9e1a2bafb","timestamp":"2019-02-26T09:25:18.710Z"}
+{"level":"error","message":"Course with id: undefined Not Found","timestamp":"2019-02-26T09:25:21.707Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-26T09:26:42.397Z"}
+{"level":"info","message":"New course created with id: 5c75065a8b3f20ba1ae054a4","timestamp":"2019-02-26T09:26:50.024Z"}
+{"level":"error","message":"Course with id: undefined Not Found","timestamp":"2019-02-26T09:26:52.512Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-26T09:28:15.733Z"}
+{"level":"info","message":"New course created with id: 5c7506b90cf761ba27fc28e9","timestamp":"2019-02-26T09:28:25.285Z"}
+{"level":"error","message":"Course with id: undefined Not Found","timestamp":"2019-02-26T09:28:28.288Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-26T09:29:06.810Z"}
+{"level":"info","message":"New course created with id: 5c7506e9ae55f2ba3aeed78c","timestamp":"2019-02-26T09:29:13.300Z"}
+{"level":"error","message":"Course with id: undefined Not Found","timestamp":"2019-02-26T09:29:15.701Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-26T09:30:06.414Z"}
+{"level":"info","message":"New course created with id: 5c7507255e3ca8ba614e323b","timestamp":"2019-02-26T09:30:13.831Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-26T09:31:19.370Z"}
+{"level":"info","message":"New course created with id: 5c75076fd8fbe7ba7c68aeba","timestamp":"2019-02-26T09:31:27.301Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-26T09:33:04.522Z"}
+{"level":"info","message":"New course created with id: 5c7507dc841043baa898ddc9","timestamp":"2019-02-26T09:33:16.367Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-26T09:35:42.733Z"}
+{"level":"info","message":"New course created with id: 5c7508757d14b3bac6e95528","timestamp":"2019-02-26T09:35:49.744Z"}
+{"level":"info","message":"Course with id: 5c7508757d14b3bac6e95528 updated","timestamp":"2019-02-26T09:35:52.524Z"}
+{"level":"info","message":"New course created with id: 5c7509207d14b3bac6e9552b","timestamp":"2019-02-26T09:38:40.768Z"}
+{"level":"info","message":"Course with id: 5c7509207d14b3bac6e9552b updated","timestamp":"2019-02-26T09:38:43.780Z"}
+{"level":"info","message":"Course with id: 5c7509207d14b3bac6e9552b updated","timestamp":"2019-02-26T09:38:47.726Z"}
+{"level":"info","message":"Course with id: 5c7509207d14b3bac6e9552b updated","timestamp":"2019-02-26T09:38:55.175Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-26T09:40:45.793Z"}
+{"level":"info","message":"New course created with id: 5c7509ac63b7a6bb2b962788","timestamp":"2019-02-26T09:41:00.115Z"}
+{"level":"info","message":"Course with id: 5c7509ac63b7a6bb2b962788 updated","timestamp":"2019-02-26T09:41:03.889Z"}
+{"level":"info","message":"Course with id: 5c7509ac63b7a6bb2b962788 updated","timestamp":"2019-02-26T09:41:08.878Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-26T09:43:48.645Z"}
+{"level":"info","message":"New course created with id: 5c750a6a326ab4bb70ccb041","timestamp":"2019-02-26T09:44:10.404Z"}
+{"level":"info","message":"Course with id: 5c750a6a326ab4bb70ccb041 updated","timestamp":"2019-02-26T09:44:19.105Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-26T09:54:14.362Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-26T13:41:44.994Z"}

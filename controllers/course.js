@@ -15,8 +15,10 @@ var builder = new xml2js.Builder();  // JSON->xml
 var Sequelize = require('sequelize');
 var Connection = require('../database/mysql-connection');
 var user_project_rel = require('../models/user_project_rel');
+var user_collection = require('../models/user_collection');
 
 const User_project_rel = user_project_rel(Connection,Sequelize);
+const User_collection = user_collection(Connection,Sequelize);
 
 //Create course
 function createCourse(req, res){
@@ -158,7 +160,7 @@ function researchByCourseId(req,res){
     CourseM.find({_id:_id},(err,result) => {
         if(!err){
             log.info('Course with courseId: %s researched', req.body._id);
-            // console.log("research result==",result);
+            console.log("research result==",result);
             return res.json({
                 errorCode: 0,
                 msg: result
@@ -182,7 +184,7 @@ function researchByUserId(req,res){
             user_id: user_id
         }
     }).then(result =>{
-         CourseM.find({_id:result.project_id},(err,result) => {
+         CourseM.find({},(err,result) => {
             if(!err){
                 log.info('All courses of userid = %s has researched', req.body.user_id);
                 return res.json({
@@ -362,6 +364,69 @@ function downloadCourse(req, res){
     })
 }
 
+//用户收藏课件
+function collectCourse(req,res){ 
+    CourseM.find({_id:req.body._id},(err,result) => {
+        if(!err){
+            log.info('collect course success!');
+            User_collection.create({
+                user_id:req.body.user_id,
+                course_id:req.body._id
+            })
+            return res.json({
+                errorCode: 0,
+                msg: "collect success!"
+            });
+        }else{
+            res.statusCode = 500;
+            log.error('Internal error(%d): %s', res.statusCode, err.message);
+            return res.json({
+                errorCode: 1,
+                error: 'Server error'
+            });
+        }
+    })
+}
+
+//查看用户收藏课件
+function allCollectCourses(req,res){ 
+    const user_id = req.query.user_id;
+    User_collection.findAll({  
+        where:{
+            user_id: user_id
+        }
+    }).then( async result0=>{
+        var resultArray = [];
+        if(result0.length!=0){
+            for(let i=0;i<result0.length;i++){
+                let item = {
+                    course_id:result0[i].dataValues.course_id
+                };
+                resultArray.push(item);
+                console.log("resultArray:",resultArray[i].course_id) 
+                try {
+                    await CourseM.find(
+                        {_id:resultArray[i].course_id}
+                    ).then(result1 => {
+                        console.log("result1===",result1)
+                        let rs1 = {
+                            errorCode: 0,
+                            msg: result1
+                        }
+                        res.send(rs1);
+                        // return res.json({
+                        //         errorCode: 0,
+                        //         msg: result1
+                        // });
+                    })
+                }catch (err) {
+                        console.log(err);
+                }
+            }
+        }   
+    })
+}
+
 module.exports={
     createCourse:createCourse,
     deleteCourse:deleteCourse,
@@ -370,5 +435,7 @@ module.exports={
     researchByCourseName:researchByCourseName,
     researchByUserId:researchByUserId,
     downloadCourse:downloadCourse,
-    allCourses:allCourses
+    allCourses:allCourses,
+    collectCourse:collectCourse,
+    allCollectCourses:allCollectCourses
 }
