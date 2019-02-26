@@ -399,21 +399,26 @@ function allCollectCourses(req,res){
         var resultArray = [];
         if(result0.length!=0){
             for(let i=0;i<result0.length;i++){
+                console.log('result0.length',result0.length);
+                console.log('result0[i].dataValues.course_id:',result0[i].dataValues.course_id);
+                /*
                 let item = {
                     course_id:result0[i].dataValues.course_id
                 };
-                resultArray.push(item);
-                console.log("resultArray:",resultArray[i].course_id) 
+                */
+                //resultArray.push(item);
+                //console.log("resultArray:",result0[i].dataValues.course_id) 
                 try {
                     await CourseM.find(
-                        {_id:resultArray[i].course_id}
+                        {_id:result0[i].dataValues.course_id}
                     ).then(result1 => {
                         console.log("result1===",result1)
                         let rs1 = {
                             errorCode: 0,
                             msg: result1
                         }
-                        res.send(rs1);
+                        //res.send(rs1);
+                        resultArray.push(result1);
                         // return res.json({
                         //         errorCode: 0,
                         //         msg: result1
@@ -423,6 +428,8 @@ function allCollectCourses(req,res){
                         console.log(err);
                 }
             }
+            res.send(resultArray);
+
         }   
     })
 }
