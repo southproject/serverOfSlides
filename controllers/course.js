@@ -167,7 +167,7 @@ function researchByCourseId(req,res){
     const _id = req.query._id;
     CourseM.find({_id:_id},(err,result) => {
         if(!err){
-            log.info('Course with courseId: %s researched', req.body._id);
+            log.info('Course with courseId: %s researched', req.query._id);
             // console.log("research result==",result);
             return res.json({
                 errorCode: 0,
