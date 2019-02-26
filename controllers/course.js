@@ -182,7 +182,7 @@ function researchByUserId(req,res){
             user_id: user_id
         }
     }).then(result =>{
-         CourseM.find({_id:result.project_id},(err,result) => {
+         CourseM.find({},(err,result) => {
             if(!err){
                 log.info('All courses of userid = %s has researched', req.body.user_id);
                 return res.json({
