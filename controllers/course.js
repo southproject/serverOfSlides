@@ -252,13 +252,20 @@ function allCourses(req,res){
     CourseM.deleteMany({_id:req.body._id},(err,result)=>{
         if(!err){
             log.info('Course deleted with _id: %s', req.body._id);
-            return res.json({
-                errorCode: 0
-            });
+            User_collection.destroy({
+                where:{course_id:req.body._id}
+            }).then(result=>{
+                console.log('删除课件同时删除收藏关联')
+                return res.json({
+                    errorCode: 0,
+                    msg:'delete course success'
+                });
+            })
         }else{
             log.info('delete course failure',err);
             return res.json({
-                errorCode: 1
+                errorCode: 1,
+                msg:'delete course failure'
             });
         }
     })
@@ -388,6 +395,19 @@ function collectCourse(req,res){
     })
 }
 
+//取消收藏课件
+function cancelCollect(req,res){ 
+    User_collection.destroy({
+        where:{course_id:req.body._id}
+    }).then(result=>{
+        console.log('取消收藏课件')
+        return res.json({
+            errorCode: 0,
+            msg:'cancel course success'
+        });
+    })
+}
+
 //查看用户收藏课件
 function allCollectCourses(req,res){ 
     const user_id = req.query.user_id;
@@ -438,5 +458,6 @@ module.exports={
     downloadCourse:downloadCourse,
     allCourses:allCourses,
     collectCourse:collectCourse,
-    allCollectCourses:allCollectCourses
+    allCollectCourses:allCollectCourses,
+    cancelCollect:cancelCollect
 }

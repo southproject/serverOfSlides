@@ -134,3 +134,16 @@
 {"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T02:10:01.465Z"}
 {"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T02:10:46.027Z"}
 {"level":"error","message":"Internal error(500): %s","timestamp":"2019-02-27T02:11:00.727Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T02:18:18.504Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T02:20:36.377Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T02:26:20.812Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T02:27:45.119Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T02:29:41.056Z"}
+{"level":"info","message":"Course deleted with _id: 5c6f73a2e00c7f1b4885c79d","timestamp":"2019-02-27T02:29:43.519Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T02:32:09.638Z"}
+{"level":"info","message":"Course deleted with _id: 5c6f73a2e00c7f1b4885c79d","timestamp":"2019-02-27T02:32:44.035Z"}
+{"level":"info","message":"collect course success!","timestamp":"2019-02-27T02:34:06.359Z"}
+{"level":"info","message":"Course deleted with _id: 5c6f75dfe00c7f1b4885c7a5","timestamp":"2019-02-27T02:35:07.054Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T02:39:51.683Z"}
+{"level":"info","message":"Course deleted with _id: 5c6fa935e00c7f1b4885c7c2","timestamp":"2019-02-27T02:41:24.934Z"}
+{"level":"info","message":"collect course success!","timestamp":"2019-02-27T02:44:02.158Z"}
