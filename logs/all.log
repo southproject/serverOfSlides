@@ -147,3 +147,30 @@
 {"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T02:39:51.683Z"}
 {"level":"info","message":"Course deleted with _id: 5c6fa935e00c7f1b4885c7c2","timestamp":"2019-02-27T02:41:24.934Z"}
 {"level":"info","message":"collect course success!","timestamp":"2019-02-27T02:44:02.158Z"}
+{"level":"info","message":"All courses of userid = undefined has researched","timestamp":"2019-02-27T03:00:40.370Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T03:06:51.541Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T03:08:27.155Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T03:10:53.271Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T03:12:28.893Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T03:13:37.322Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T03:15:45.336Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T03:16:11.136Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T03:19:57.833Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T03:20:57.714Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T03:23:53.137Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T03:24:12.581Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T03:24:43.955Z"}
+{"level":"error","message":"Internal error(500): %s","timestamp":"2019-02-27T03:25:10.508Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T03:25:25.090Z"}
+{"level":"error","message":"Internal error(500): %s","timestamp":"2019-02-27T03:25:29.121Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T03:26:25.002Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T03:27:30.694Z"}
+{"level":"info","message":"Course with id: 5c6f7633e00c7f1b4885c7a6 updated","timestamp":"2019-02-27T03:28:29.671Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T03:31:06.950Z"}
+{"level":"info","message":"Course with id: 5c6f7633e00c7f1b4885c7a6 updated","timestamp":"2019-02-27T03:31:11.325Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T03:48:05.397Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T03:48:52.652Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T03:50:54.061Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T03:53:53.993Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T03:57:22.055Z"}
+{"level":"info","message":"Course with id: 5c6f7633e00c7f1b4885c7a6 updated","timestamp":"2019-02-27T03:57:25.077Z"}
