@@ -401,35 +401,29 @@ function allCollectCourses(req,res){
             for(let i=0;i<result0.length;i++){
                 console.log('result0.length',result0.length);
                 console.log('result0[i].dataValues.course_id:',result0[i].dataValues.course_id);
-                /*
-                let item = {
-                    course_id:result0[i].dataValues.course_id
-                };
-                */
-                //resultArray.push(item);
-                //console.log("resultArray:",result0[i].dataValues.course_id) 
                 try {
                     await CourseM.find(
                         {_id:result0[i].dataValues.course_id}
                     ).then(result1 => {
                         console.log("result1===",result1)
-                        let rs1 = {
-                            errorCode: 0,
-                            msg: result1
-                        }
-                        //res.send(rs1);
                         resultArray.push(result1);
-                        // return res.json({
-                        //         errorCode: 0,
-                        //         msg: result1
-                        // });
                     })
                 }catch (err) {
                         console.log(err);
                 }
             }
-            res.send(resultArray);
-
+            return res.json({
+                errorCode:0,
+                msg:resultArray
+            })
+            // res.send(resultArray);
+        }else{
+            res.statusCode = 500;
+            log.error('Internal error(%d): %s', res.statusCode);
+            return res.json({
+                errorCode: 1,
+                error: 'Server error'
+            });
         }   
     })
 }
