@@ -192,7 +192,7 @@ function researchByUserId(req,res){
                 console.log('result0.length',result0.length);
                 console.log('result0[i].dataValues.project_id:',result0[i].project_id);
                 try {
-                    await CourseM.find(
+                    await CourseM.findOne(
                         {_id:result0[i].project_id}
                     ).then(result1 => {
                         console.log("result1===",result1)
@@ -437,7 +437,7 @@ function allCollectCourses(req,res){
                 console.log('result0.length',result0.length);
                 console.log('result0[i].course_id:',result0[i].course_id);
                 try {
-                    await CourseM.find(
+                    await CourseM.findOne(
                         {_id:result0[i].course_id}
                     ).then(result1 => {
                         console.log("result1===",result1)

@@ -174,3 +174,8 @@
 {"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T03:53:53.993Z"}
 {"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T03:57:22.055Z"}
 {"level":"info","message":"Course with id: 5c6f7633e00c7f1b4885c7a6 updated","timestamp":"2019-02-27T03:57:25.077Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T10:12:21.792Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T10:15:55.280Z"}
+{"level":"info","message":"collect course success!","timestamp":"2019-02-27T10:17:49.583Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T10:18:48.480Z"}
+{"level":"info","message":"Connected to MongoDB! ","timestamp":"2019-02-27T10:20:01.672Z"}
