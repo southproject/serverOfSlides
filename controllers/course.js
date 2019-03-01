@@ -93,14 +93,14 @@ function createCourse(req, res){
 //update course by _id
 function updateCourse(req,res){
     var _id = req.body._id;
-    console.log("_id-----",_id)
     if(!_id){
         res.statusCode = 404;
         log.error('Course with id: %s Not Found', _id);
         return res.json({
             error:'Not Found'
         });
-}
+    }
+
     condiction = {_id: req.body._id},
               query = {$set: {
                   courseName:req.body.courseName,
@@ -133,10 +133,12 @@ function updateCourse(req,res){
               CourseM.updateOne(condiction, query, (err, result) => {
                 if(!err){
                     log.info('Course with id: %s updated', _id);
-                    return res.json({
-                        errorCode: 0,
-                        status: 'OK'
-                    });
+                    CourseM.find({_id: req.body._id},(err,result1) => {
+                        return res.json({
+                            errorCode: 0,
+                            msg: result1
+                        });
+                    })
                 }else{
                     if(err.name = 'ValidationError'){
                         res.statusCode = 400;
@@ -179,27 +181,40 @@ function researchByCourseId(req,res){
 //research course by user_id
 function researchByUserId(req,res){
     const user_id = req.query.user_id;
-    User_project_rel.find({  
+    User_project_rel.findAll({  
         where:{
             user_id: user_id
         }
-    }).then(result =>{
-         CourseM.find({},(err,result) => {
-            if(!err){
-                log.info('All courses of userid = %s has researched', req.body.user_id);
-                return res.json({
-                    errorCode: 0,
-                    msg: result
-                });
-            }else{
-                res.statusCode = 500;
-                log.error('Internal error(%d): %s', res.statusCode, err.message);
-                return res.json({
-                    errorCode: 1,
-                    error: 'Server error'
-                });
+    }).then( async result0=>{
+        var resultArray = [];
+        if(result0.length!=0){
+            for(let i=0;i<result0.length;i++){
+                console.log('result0.length',result0.length);
+                console.log('result0[i].dataValues.project_id:',result0[i].project_id);
+                try {
+                    await CourseM.findOne(
+                        {_id:result0[i].project_id}
+                    ).then(result1 => {
+                        console.log("result1===",result1)
+                        resultArray.push(result1);
+                    })
+                }catch (err) {
+                        console.log(err);
+                }
             }
-        })
+            return res.json({
+                errorCode:0,
+                msg:resultArray
+            })
+            res.send(resultArray);
+        }else{
+            res.statusCode = 500;
+            log.error('Internal error(%d): %s', res.statusCode);
+            return res.json({
+                errorCode: 1,
+                error: 'Server error'
+            });
+        }   
     })
 }
 
@@ -252,13 +267,20 @@ function allCourses(req,res){
     CourseM.deleteMany({_id:req.body._id},(err,result)=>{
         if(!err){
             log.info('Course deleted with _id: %s', req.body._id);
-            return res.json({
-                errorCode: 0
-            });
+            User_collection.destroy({
+                where:{course_id:req.body._id}
+            }).then(result=>{
+                console.log('删除课件同时删除收藏关联')
+                return res.json({
+                    errorCode: 0,
+                    msg:'delete course success'
+                });
+            })
         }else{
             log.info('delete course failure',err);
             return res.json({
-                errorCode: 1
+                errorCode: 1,
+                msg:'delete course failure'
             });
         }
     })
@@ -388,6 +410,19 @@ function collectCourse(req,res){
     })
 }
 
+//取消收藏课件
+function cancelCollect(req,res){ 
+    User_collection.destroy({
+        where:{course_id:req.body._id}
+    }).then(result=>{
+        console.log('取消收藏课件')
+        return res.json({
+            errorCode: 0,
+            msg:'cancel course success'
+        });
+    })
+}
+
 //查看用户收藏课件
 function allCollectCourses(req,res){ 
     const user_id = req.query.user_id;
@@ -400,36 +435,30 @@ function allCollectCourses(req,res){
         if(result0.length!=0){
             for(let i=0;i<result0.length;i++){
                 console.log('result0.length',result0.length);
-                console.log('result0[i].dataValues.course_id:',result0[i].dataValues.course_id);
-                /*
-                let item = {
-                    course_id:result0[i].dataValues.course_id
-                };
-                */
-                //resultArray.push(item);
-                //console.log("resultArray:",result0[i].dataValues.course_id) 
+                console.log('result0[i].course_id:',result0[i].course_id);
                 try {
-                    await CourseM.find(
-                        {_id:result0[i].dataValues.course_id}
+                    await CourseM.findOne(
+                        {_id:result0[i].course_id}
                     ).then(result1 => {
                         console.log("result1===",result1)
-                        let rs1 = {
-                            errorCode: 0,
-                            msg: result1
-                        }
-                        //res.send(rs1);
                         resultArray.push(result1);
-                        // return res.json({
-                        //         errorCode: 0,
-                        //         msg: result1
-                        // });
                     })
                 }catch (err) {
                         console.log(err);
                 }
             }
-            res.send(resultArray);
-
+            return res.json({
+                errorCode:0,
+                msg:resultArray
+            })
+            // res.send(resultArray);
+        }else{
+            res.statusCode = 500;
+            log.error('Internal error(%d): %s', res.statusCode);
+            return res.json({
+                errorCode: 1,
+                error: 'Server error'
+            });
         }   
     })
 }
@@ -444,5 +473,6 @@ module.exports={
     downloadCourse:downloadCourse,
     allCourses:allCourses,
     collectCourse:collectCourse,
-    allCollectCourses:allCollectCourses
+    allCollectCourses:allCollectCourses,
+    cancelCollect:cancelCollect
 }
