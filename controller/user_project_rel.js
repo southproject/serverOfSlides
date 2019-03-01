@@ -4,8 +4,10 @@ var Connection = require('../database/mysql-connection');
 const redisConnection = require('../database/redis-connection');
 
 var user_project_rel = require('../models/user_project_rel');
+var user_table = require('../models/user_table');
 
 const User_project_rel = user_project_rel(Connection, Sequelize);
+const User_table = user_table(Connection,Sequelize);
 
 //reflect array
 var reflectArray = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
@@ -16,31 +18,51 @@ var reflectArray = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
 ]
 
 //add project and user relationship:join project api
+//add ajust logic before join check if user already in
 function joinProjectRelationShip(req, res) {
 
     const project_id = req.body.project_id;
     const user_id = req.body.user_id;
 
-    User_project_rel.create({
+    //check before join
+    User_project_rel.findOne({
+        where:{
+            user_id:user_id,
+            project_id:project_id,
+            hoster:0
+        }
+    }).then(result=>{
+        if(result==null){
+            User_project_rel.create({
 
-        user_id: user_id,
-        project_id: project_id,
-        hoster: 0
-    }).then(result => {
-        if (result.length != 0) {
-            let rs0 = {
-                errorCode: 0,
-                msg: "success"
+                user_id: user_id,
+                project_id: project_id,
+                hoster: 0
+            }).then(result => {
+                if (result.length != 0) {
+                    let rs0 = {
+                        errorCode: 0,
+                        msg: "success"
+                    }
+                    res.send(rs0);
+                } else {
+                    let rs1 = {
+                        errorCode: 1,
+                        msg: "failure"
+                    }
+                    res.send(rs1);
+                }
+            })
+        }else{
+            let rs2 = {
+                errorCode: 2,
+                msg: "user already in"
             }
-            res.send(rs0);
-        } else {
-            let rs1 = {
-                errorCode: 1,
-                msg: "failure"
-            }
-            res.send(rs1);
+            res.send(rs2);
         }
     })
+
+    
 }
 
 
@@ -132,7 +154,7 @@ function convertTen(str) {
     }
     return resultValue;
 }
-
+//add username in result
 function getProjectUsersList(req,res){
 
     const project_id = req.query.project_id;
@@ -145,11 +167,27 @@ function getProjectUsersList(req,res){
             hoster:0
         },
         order:[[ 'user_id','ASC']]
-    }).then(result=>{
+    }).then(async result=>{
         if(result.length == 0){
             res.json({errorCode:1,msg:'no other user in!'})
         }else{
-            res.json({errorCode:0,msg:result});
+           var resultArray = [];
+           for(let i=0;i<result.length;i++){
+               await User_table.findOne({
+                where:{
+                    user_id:result[i].dataValues.user_id,
+                }
+               }).then(result=>{
+                   console.log("user_table:",result.dataValues.user_name);
+                   let item = {
+                       user_id:result.dataValues.user_id,
+                       user_name:result.dataValues.user_name
+                   }
+                   resultArray.push(item)
+               })
+           }
+            //console.log('reuslt:',result[0].dataValues.user_id);
+            res.json({errorCode:0,msg:resultArray});
         }
     })
 }
