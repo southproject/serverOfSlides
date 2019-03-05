@@ -120,6 +120,7 @@ router.get('/saveUserModel',User_tableC.saveUserModel);
  */
 router.post('/register',User_tableC.register);
 router.get('/queryUserinfo',passport.authenticate('bearer',{session:false}),User_tableC.queryUserinfo);
+router.get('/getUserid',passport.authenticate('bearer',{session:false}),User_tableC.getUserid);
 router.put('/updateInfo',passport.authenticate('bearer',{session:false}),User_tableC.updateInfo);
 router.get('/getPersonalInfo',passport.authenticate('bearer',{session:false}),User_tableC.getPersonalInfo);
 router.put('/updatePersonalInfo',passport.authenticate('bearer',{session:false}),User_tableC.updatePersonalInfo);

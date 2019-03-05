@@ -387,6 +387,32 @@ function updatePersonalInfo(req, res) {
 }
 
 
+//getUserid
+function getUserid(req,res){
+
+    const  user_name = req.query.user_name;
+
+    User_table.findOne({
+        where:{
+            user_name:user_name
+        }
+    }).then(result=>{
+        if(result!=null){
+            let rs0 = {
+                errorCode: 0,
+                msg: result
+            }
+            res.send(rs0);
+        }else{
+            let rs1 = {
+                errorCode: 1,
+                msg: 'no user!'
+            }
+            res.send(rs1);
+        }
+    })
+}
+
 module.exports={
     addUsers:addUsers,
     queryUsers:queryUsers,
@@ -399,5 +425,6 @@ module.exports={
     queryUserinfo:queryUserinfo,
     updateInfo:updateInfo,
     getPersonalInfo:getPersonalInfo,
-    updatePersonalInfo:updatePersonalInfo
+    updatePersonalInfo:updatePersonalInfo,
+    getUserid:getUserid
 }
