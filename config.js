@@ -19,10 +19,16 @@ var mongoose_conf = {
 
 var webSocketPort = 3001;
 
+var host = '127.0.0.1';
+var port = 3000;
+
+
 module.exports = {
     mysql_conf,
     tokenLifeTime,
     redis_conf,
     mongoose_conf,
-    webSocketPort
+    webSocketPort,
+    host,
+    port
 };
