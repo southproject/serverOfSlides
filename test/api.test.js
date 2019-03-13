@@ -38,7 +38,7 @@ describe('hooks',()=>{
     })
 });
 */
-
+/*
 //generateToken
 describe('API-1:generateToken',()=>{
 
@@ -79,6 +79,42 @@ describe('API-1:generateToken',()=>{
             'client_secret': 'xiaomi'
         })
         req.write(postData);
+        req.end();
+    });
+});
+*/
+
+describe('API-2:getPersonalInfo',()=>{
+
+    it('should return PseronalInfo',()=>{
+
+        var options = {
+            'method':'GET',
+            'hostname':config.host,
+            'port':config.port,
+            'path':'/api/getPersonalInfo?user_id=14',
+            'headers':{
+                'Authorization':'Bearer 58a83636cc5a5d66df4da499d01079bd6b0e172377902ba24ec5359cc0ebe2d8',
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }
+
+        var req = http.request(options,function(res){
+            var chunks = [];
+
+            res.on('data',(chunk)=>{
+                chunks.push(chunk);
+            });
+
+            res.on('end',(chunk)=>{
+                var body = Buffer.concat(chunks);
+                console.log(body.toString());
+            });
+
+            res.on('error',(error)=>{
+                console.error(error);
+            });
+        });
         req.end();
     });
 });
