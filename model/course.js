@@ -3,15 +3,22 @@ var Schema = mongoose.Schema;
 
 //create Schema
 var Course = new Schema({
-    courseId:{ type: Number, required: true },
     courseName:{ type:String },
     grade:{ type:String },
     subject:{ type:String },
     descript:{ type:String },
-    knowledges:{ type:String },
+    knowledges:{ type:Array },
     isOpen:{ type:Boolean },
     isEdit:{ type:Boolean },
-    catalog:{ type:Array },
+    catalog:{ 
+        children:[
+            {
+            children:Array,
+            name:String
+          }
+        ],
+        name:String
+     },
     fileSize:{type:String},
     scope:{type:String},
     addTime:{type:Date},
@@ -24,18 +31,26 @@ var Course = new Schema({
         }
     },
     slides:{
-        pageId:{ type: Number},
         templateId:{ type: Number },
-        media:{ type: Array },
-        text:{ type: Array },
-        picture:{ type: Array },
-        pageThumbnail:{
-            pageurl:String,
-            style:{
-                pagewidth:String,
-                pageheight:String
+        slide:[
+            {
+                pageId:{ type: Number},
+                // media:{ type: Array },
+                // images:{type:Array},
+                // audio:{type:Array},
+                // video:{type:Array},
+                // text:{ type: Array },
+                // picture:{ type: Array },
+                pageThumbnail:{
+                    pageurl:String,
+                    style:{
+                        pagewidth:String,
+                        pageheight:String
+                    }
+                },
+                media:{type:Array}
             }
-        }
+        ]
     }
   })
 

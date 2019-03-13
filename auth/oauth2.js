@@ -158,7 +158,8 @@ var generateTokens =  function(data, done){
         //console.log("-------come in done function1------");
         //console.log("done: ", done);
         done(null, access_TokenValue, refresh_TokenValue, {
-            'expires_in': config.tokenLifeTime
+            'expires_in': config.tokenLifeTime,
+            'user_id':data.user_id
         });
         //console.log("-------come in done function2------");
     });

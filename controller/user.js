@@ -2,6 +2,7 @@ var Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 var Connection = require('../database/mysql-connection');
 var user = require('../models/user');
+var http = require('http');
 
 const User = user(Connection, Sequelize);
 
@@ -20,6 +21,7 @@ function UserQuery(req, res){
         }
     })
 }
+
 
 module.exports = {
     UserQuery : UserQuery

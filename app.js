@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var api = require('./routes/api');
 var index = require('./routes/index');
+var websocketServer=require('./servers/websocketServer');
 var app = express();
 const swaggerJSDoc = require('swagger-jsdoc');
 
@@ -46,13 +47,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.all('*', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  res.header("Access-Control-Allow-Headers", "Content-Type");
+  res.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
   res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
   res.header("X-Powered-By", '3.2.1');
   res.header("Content-Type", "application/json;charset=utf-8");
   next();
 });
 
+//start server
+//app.use(websocketServer);
 
 app.use('/', index);
 //app.use('/users', users);
@@ -60,17 +63,6 @@ app.use('/api',api);
 console.log("---App.js---");
 //app.use('/api/oauth/token',oauth2.token);
 app.use('/api/oauth',oauth);
-/*
-//redis connection test
-var redis = require('redis'),
-    client = redis.createClient(6379,'127.0.0.1');
-
-client.on("error",function(err){
-    console.log("Error: "+err);
-});
-
-client.set("string key","string val", redis.print);
-*/
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

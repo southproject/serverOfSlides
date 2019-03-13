@@ -5,10 +5,8 @@ var router = express.Router();
 
 
 const mysqlConnection = require('../database/mysql-connection');
-// const redisConnection = require('../database/redis-connection');
+const redisConnection = require('../database/redis-connection');
 const mongoConnection = require('../database/mongo-connection');
-
-
 
 var passport = require('passport');
 var BearerStrategy = require('passport-http-bearer').Strategy;
@@ -17,7 +15,10 @@ var config = require('../config');
 
 //---MySQL：Controller function---models
 const User_tableC = require('../controller/user_table');
+const User_project_relC = require('../controller/user_project_rel');
 const Access_tokenC = require('../controller/access_token');
+
+const WebSocketServer = require('../servers/websocketServer');
 
 //---MongoDB: Controllers function----model
 const CourseC = require('../controllers/course');
@@ -72,19 +73,30 @@ mysqlConnection
 .catch(err=>{
     console.error('Unable to connect to the mysqlConnection',err);
 });
-/*
+
 //logs for redisConnection
 redisConnection.on("error",function(err){
     console.log("Error: "+err);
 });
-redisConnection.set("string key","string val", redis.print);
-*/
+//redisConnection.set("string key","string val", redis.print);
+redisConnection.flushall(function (err, reply) {
+    if(reply!=null){
+        console.log("flushall: ",reply);
+    }else{
+        console.log("flushall: ",err);
+    }
+});
+redisConnection.set("key", 2422350, redis.print);
+
+
+
+
 //logs for mongooseConnection
 mongoConnection.on('error',function(err){
     log.error('Connection error: ', err.message);
 });
 mongoConnection.once('open', function callback(){
-    log.info('Connected to DB! ');
+    log.info('Connected to MongoDB! ');
 });
 
 
@@ -94,16 +106,47 @@ router.get('/', passport.authenticate('bearer',{session:false}), function(req,re
     });
 });
 
-
+/**
+ * API for test
+ *  */
 router.get('/queryUsers', passport.authenticate('bearer',{session:false}), User_tableC.queryUsers);
 router.post('/addUsers',passport.authenticate('bearer',{session:false}),User_tableC.addUsers);
 router.get('/queryResultTest',User_tableC.queryResultTest);
 router.delete('/destoryFormatTest',User_tableC.destoryFormatTest);
 router.get('/saveUserModel',User_tableC.saveUserModel);
 
+/**
+ * API for Slides
+ */
+router.post('/register',User_tableC.register);
+router.get('/queryUserinfo',passport.authenticate('bearer',{session:false}),User_tableC.queryUserinfo);
+router.get('/getUserid',passport.authenticate('bearer',{session:false}),User_tableC.getUserid);
+router.put('/updateInfo',passport.authenticate('bearer',{session:false}),User_tableC.updateInfo);
+router.get('/getPersonalInfo',passport.authenticate('bearer',{session:false}),User_tableC.getPersonalInfo);
+router.put('/updatePersonalInfo',passport.authenticate('bearer',{session:false}),User_tableC.updatePersonalInfo);
+router.post('/joinProjectRelationShip',passport.authenticate('bearer',{session:false}),User_project_relC.joinProjectRelationShip);
+router.get('/getProjectUsersList',passport.authenticate('bearer',{session:false}),User_project_relC.getProjectUsersList);
+
+//Tools for generate TinyCode
+router.get('/generateTinyCode',passport.authenticate('bearer',{session:false}),User_project_relC.generateTinyCode);
+router.get('/getReflectProject_id',passport.authenticate('bearer',{session:false}),User_project_relC.getReflectProject_id);
+
 //MongoDB controller Function
-router.post('/createCourse',CourseC.createCourse);
-router.delete('/deleteCourse',CourseC.deleteCourse);
-router.put('/updateCourse',CourseC.updateCourse);
-router.get('/researchCourse',CourseC.researchCourse);
+router.post('/createCourse',passport.authenticate('bearer',{session:false}),CourseC.createCourse);
+router.delete('/deleteCourse',passport.authenticate('bearer',{session:false}),CourseC.deleteCourse);
+router.put('/updateCourse',passport.authenticate('bearer',{session:false}),CourseC.updateCourse);
+router.get('/researchByCourseId',passport.authenticate('bearer',{session:false}),CourseC.researchByCourseId);
+router.get('/researchByCourseName',passport.authenticate('bearer',{session:false}),CourseC.researchByCourseName);
+router.get('/researchByUserId',passport.authenticate('bearer',{session:false}),CourseC.researchByUserId);
+router.get('/downloadCourse',passport.authenticate('bearer',{session:false}),CourseC.downloadCourse);
+router.get('/allCourses',passport.authenticate('bearer',{session:false}),CourseC.allCourses);
+router.post('/collectCourse',passport.authenticate('bearer',{session:false}),CourseC.collectCourse);
+router.get('/allCollectCourses',passport.authenticate('bearer',{session:false}),CourseC.allCollectCourses);
+router.delete('/cancelCollect',passport.authenticate('bearer',{session:false}),CourseC.cancelCollect);
+
+//createWebSocketServer
+router.post('/createWebSocketServer',passport.authenticate('bearer',{session:false}),WebSocketServer.createWebSocketServer);
+//router.get('/getUserinNSP',WebSocketServer.getUserinNSP);
+router.post('/createChatChannel',passport.authenticate('bearer',{session:false}),WebSocketServer.createChatChannel);
+
 module.exports = router;
