@@ -9,6 +9,8 @@ var index = require('./routes/index');
 var websocketServer=require('./servers/websocketServer');
 var app = express();
 const swaggerJSDoc = require('swagger-jsdoc');
+const easyMonitor = require('easy-monitor');
+easyMonitor('SyncProject');
 
 var oauth = require('./routes/oauth');
 

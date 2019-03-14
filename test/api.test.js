@@ -2,43 +2,8 @@ var assert = require('assert');
 var http = require('http');
 var qs = require('querystring');
 var config = require('../config');
-/*
-//basic example
-describe('Array',function(){
-    describe('#indexOf()',function(){
-        it('shoud return -1 when the value is not present',function(){
-            assert.equal([1,2,3].indexOf(4),-1);
-        });
-    });
-});
-*/
-/*
-//1.hook execute logic
-describe('hooks',()=>{
-    
-    before(()=>{
-        console.log('before');
-    })
 
-    after(()=>{
-        console.log('after');
-    })
-
-    beforeEach(()=>{
-        console.log('beforeEach');
-    })
-
-    afterEach(()=>{
-        console.log('afterEach');
-    })
-
-    //test scripts
-    it('shoud return -1 when the value is not present',()=>{
-        assert.equal([1,2,3].indexOf(4),-1);
-    })
-});
-*/
-/*
+var access_token = [];
 //generateToken
 describe('API-1:generateToken',()=>{
 
@@ -63,7 +28,11 @@ describe('API-1:generateToken',()=>{
 
             res.on('end',(chunk)=>{
                 var body = Buffer.concat(chunks);
-                console.log(body.toString());
+                AccessToken = body.toString();
+                access_token_json = JSON.parse(AccessToken);
+                access_token.push(access_token_json.access_token);
+                //console.log(body.toString().access_token);
+                //console.log('access_token:',access_token);
             });
 
             res.on('error',(error)=>{
@@ -82,11 +51,14 @@ describe('API-1:generateToken',()=>{
         req.end();
     });
 });
-*/
+//contact bearer token
+var Token = 'Bearer '+access_token[0];
 
 describe('API-2:getPersonalInfo',()=>{
 
     it('should return PseronalInfo',()=>{
+
+        //console.log('Token:',access_token);
 
         var options = {
             'method':'GET',
@@ -94,7 +66,7 @@ describe('API-2:getPersonalInfo',()=>{
             'port':config.port,
             'path':'/api/getPersonalInfo?user_id=14',
             'headers':{
-                'Authorization':'Bearer 58a83636cc5a5d66df4da499d01079bd6b0e172377902ba24ec5359cc0ebe2d8',
+                'Authorization':Token,
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         }
