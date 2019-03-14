@@ -16,9 +16,11 @@ var Sequelize = require('sequelize');
 var Connection = require('../database/mysql-connection');
 var user_project_rel = require('../models/user_project_rel');
 var user_collection = require('../models/user_collection');
+var resource = require('../models/resource');
 
 const User_project_rel = user_project_rel(Connection,Sequelize);
 const User_collection = user_collection(Connection,Sequelize);
+const Resource = resource(Connection,Sequelize);
 
 //Create course
 function createCourse(req, res){
@@ -463,6 +465,31 @@ function allCollectCourses(req,res){
     })
 }
 
+//获取知识点关联资源
+async function resourceRel(req,res){ 
+    var value = req.query.knowledges;
+    var y = value.replace(/"/g,'').replace(/\[/g,'').replace(/\]/g,'').replace(/\s/g,'').split(',');
+    var resultArr=[];
+    for(let i=0;i<y.length;i++){
+      await  Resource.findAll({
+           where:{
+               r_name:y[i].toString()
+           }   
+     }).then(result=>{
+         console.log('关联资源呈现')
+         for(let j=0;j<result.length;j++){
+            resultArr.push(result[j]);
+         }     
+       }
+    )}
+    let rs={
+        errorCode:0,
+        msg:resultArr
+    }
+   res.send(rs);
+}
+
+
 module.exports={
     createCourse:createCourse,
     deleteCourse:deleteCourse,
@@ -474,5 +501,6 @@ module.exports={
     allCourses:allCourses,
     collectCourse:collectCourse,
     allCollectCourses:allCollectCourses,
-    cancelCollect:cancelCollect
+    cancelCollect:cancelCollect,
+    resourceRel:resourceRel
 }

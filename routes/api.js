@@ -143,7 +143,7 @@ router.get('/allCourses',passport.authenticate('bearer',{session:false}),CourseC
 router.post('/collectCourse',passport.authenticate('bearer',{session:false}),CourseC.collectCourse);
 router.get('/allCollectCourses',passport.authenticate('bearer',{session:false}),CourseC.allCollectCourses);
 router.delete('/cancelCollect',passport.authenticate('bearer',{session:false}),CourseC.cancelCollect);
-
+router.get('/resourceRel',passport.authenticate('bearer',{session:false}),CourseC.resourceRel);
 //createWebSocketServer
 router.post('/createWebSocketServer',passport.authenticate('bearer',{session:false}),WebSocketServer.createWebSocketServer);
 //router.get('/getUserinNSP',WebSocketServer.getUserinNSP);
