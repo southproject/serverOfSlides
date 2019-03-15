@@ -144,6 +144,7 @@ router.post('/collectCourse',passport.authenticate('bearer',{session:false}),Cou
 router.get('/allCollectCourses',passport.authenticate('bearer',{session:false}),CourseC.allCollectCourses);
 router.delete('/cancelCollect',passport.authenticate('bearer',{session:false}),CourseC.cancelCollect);
 router.get('/resourceRel',passport.authenticate('bearer',{session:false}),CourseC.resourceRel);
+router.get('/knowledgeRel',passport.authenticate('bearer',{session:false}),CourseC.knowledgeRel);
 //createWebSocketServer
 router.post('/createWebSocketServer',passport.authenticate('bearer',{session:false}),WebSocketServer.createWebSocketServer);
 //router.get('/getUserinNSP',WebSocketServer.getUserinNSP);

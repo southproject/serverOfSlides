@@ -13,14 +13,17 @@ var builder = new xml2js.Builder();  // JSON->xml
 
 //add user_project_rel MySQL table
 var Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 var Connection = require('../database/mysql-connection');
 var user_project_rel = require('../models/user_project_rel');
 var user_collection = require('../models/user_collection');
 var resource = require('../models/resource');
+var knowledge = require('../models/knowledge');
 
 const User_project_rel = user_project_rel(Connection,Sequelize);
 const User_collection = user_collection(Connection,Sequelize);
 const Resource = resource(Connection,Sequelize);
+const Knowledge = knowledge(Connection,Sequelize);
 
 //Create course
 function createCourse(req, res){
@@ -473,7 +476,7 @@ async function resourceRel(req,res){
     for(let i=0;i<y.length;i++){
       await  Resource.findAll({
            where:{
-               r_name:y[i].toString()
+               r_name:{[Op.like]: '%'+y[i].toString()+'%'}
            }   
      }).then(result=>{
          console.log('关联资源呈现')
@@ -489,6 +492,25 @@ async function resourceRel(req,res){
    res.send(rs);
 }
 
+//根据courseName关联呈现知识点
+async function knowledgeRel(req,res){ 
+    var value = req.query.courseName;
+    for(let i=0;i<value.length;i++){
+      await Knowledge.findAll({
+            where:{
+              title:{[Op.like]: '%'+value[i]+'%'}
+            } 
+   }).then(result=>{
+       console.log('关联知识点呈现')
+       let rs={
+        errorCode:0,
+        msg:result
+         }
+         res.send(rs);  
+     }
+  )}
+}
+
 
 module.exports={
     createCourse:createCourse,
@@ -502,5 +524,6 @@ module.exports={
     collectCourse:collectCourse,
     allCollectCourses:allCollectCourses,
     cancelCollect:cancelCollect,
-    resourceRel:resourceRel
+    resourceRel:resourceRel,
+    knowledgeRel:knowledgeRel
 }
