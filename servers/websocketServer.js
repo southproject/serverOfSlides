@@ -98,6 +98,16 @@ function syncData(project_id) {
             });
             */
         });
+        socket.on('update page', (data) => {
+            //server will broadcast to all client to execute 'update data'
+            socket.broadcast.emit('update page', data)
+            /*
+            socket.broadcast.emit('update data',{
+                username: socket.username,
+                message:data
+            });
+            */
+        });
 
         /**disconnection**/
         //when the user disconnection,server broadcast to all the clients
