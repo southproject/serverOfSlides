@@ -22,6 +22,7 @@ const WebSocketServer = require('../servers/websocketServer');
 
 //---MongoDB: Controllers function----model
 const CourseC = require('../controllers/course');
+const TemplateC = require('../controllers/template');
 
 //BearerStrategy adjust for Sequelize to MySQL
 passport.use(new BearerStrategy(
@@ -135,6 +136,11 @@ router.get('/getReflectProject_id',passport.authenticate('bearer',{session:false
 router.post('/createCourse',passport.authenticate('bearer',{session:false}),CourseC.createCourse);
 router.delete('/deleteCourse',passport.authenticate('bearer',{session:false}),CourseC.deleteCourse);
 router.put('/updateCourse',passport.authenticate('bearer',{session:false}),CourseC.updateCourse);
+
+//
+router.post('/createTemplate',passport.authenticate('bearer',{session:false}),TemplateC.createTemplate);
+router.get('/allTemplates',passport.authenticate('bearer',{session:false}),TemplateC.allTemplates); 
+//
 router.get('/researchByCourseId',passport.authenticate('bearer',{session:false}),CourseC.researchByCourseId);
 router.get('/researchByCourseName',passport.authenticate('bearer',{session:false}),CourseC.researchByCourseName);
 router.get('/researchByUserId',passport.authenticate('bearer',{session:false}),CourseC.researchByUserId);

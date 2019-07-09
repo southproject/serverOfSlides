@@ -90,6 +90,7 @@ function syncData(project_id) {
         //when the client emits 'update data',this listen and executes
         socket.on('update data', (data) => {
             //server will broadcast to all client to execute 'update data'
+            console.log("some one update:",data)
             socket.broadcast.emit('update data', data)
             /*
             socket.broadcast.emit('update data',{
